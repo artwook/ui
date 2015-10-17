@@ -2,17 +2,17 @@ var alt = require("../alt-instance");
 var IntlActions = require("../actions/IntlActions");
 var BaseStore = require("./BaseStore");
 var counterpart = require("counterpart-instance");
-var locale_en = require("assets/locales/locale-en");
 var cookies = require("cookies-js");
-counterpart.registerTranslations("en", locale_en);
-counterpart.setFallbackLocale("en");
+var locale_cn = require("assets/locales/locale-cn");
+counterpart.registerTranslations("cn", locale_cn);
+counterpart.setFallbackLocale("cn");
 
 class IntlStore extends BaseStore {
     constructor() {
         super();
-        this.currentLocale = cookies.get("graphene_locale") || "en";
-        this.locales = ["en"];
-        this.localesObject = {en: locale_en};
+        this.currentLocale = cookies.get("graphene_locale") || "cn";
+        this.locales = ["cn"];
+        this.localesObject = {cn: locale_cn};
 
         this.bindListeners({
             onSwitchLocale: IntlActions.switchLocale,
@@ -33,8 +33,8 @@ class IntlStore extends BaseStore {
 
     onSwitchLocale(locale) {
         switch (locale) {
-            case "en":
-                counterpart.registerTranslations("en", this.localesObject.en);
+            case "cn":
+                counterpart.registerTranslations("cn", this.localesObject.cn);
                 break;
 
             default:

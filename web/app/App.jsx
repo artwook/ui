@@ -84,12 +84,20 @@ class App extends React.Component {
         NotificationStore.unlisten(this._onNotificationChange);
     }
 
-    componentDidMount() { 
+    componentDidMount() {
         try {
             NotificationStore.listen(this._onNotificationChange.bind(this));
 
+            // Try to retrieve locale from cookies
+            let locale = "cn";
+            if (cookies) {
+                locale = cookies.get("graphene_locale");
+            }
+            // Switch locale if the user has already set a different locale than en
+            let localePromise = (locale) ? IntlActions.switchLocale(locale) : null;
             Promise.all([
-                AccountStore.loadDbData()            
+                localePromise, // Non API
+                AccountStore.loadDbData()
             ]).then(() => {
                 AccountStore.tryToSetCurrentAccount();
                 this.setState({loading: false});
