@@ -107,6 +107,7 @@ class WalletActions {
                         "active_key": active_private.private_key.toPublicKey().toPublicKeyString(),
                         "memo_key": active_private.private_key.toPublicKey().toPublicKeyString(),
                         "refcode": refcode,
+                        // "referrer": window && window.BTSW ? BTSW.referrer : ""
                         "referer": cookies.get("graphene_d_r") || ""
                     }
                 })
