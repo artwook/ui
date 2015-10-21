@@ -87,15 +87,23 @@ class App extends React.Component {
         try {
             NotificationStore.listen(this._onNotificationChange.bind(this));
 
-            Promise.all([
-                AccountStore.loadDbData()
-            ]).then(() => {
-                AccountStore.tryToSetCurrentAccount();
-                this.setState({loading: false});
-            }).catch(error => {
-                console.log("[App.jsx] ----- ERROR ----->", error, error.stack);
-                this.setState({loading: false});
-            });
+        // Try to retrieve locale from cookies
+        let locale;
+        if (cookies) {
+            locale = cookies.get("graphene_locale");
+        }
+        // Switch locale if the user has already set a different locale than en
+        let localePromise = (locale) ? IntlActions.switchLocale(locale) : null;
+        Promise.all([
+            localePromise, // Non API
+            AccountStore.loadDbData()
+        ]).then(() => {
+            AccountStore.tryToSetCurrentAccount();
+            this.setState({loading: false});
+        }).catch(error => {
+            console.log("[App.jsx] ----- ERROR ----->", error, error.stack);
+            this.setState({loading: false});
+        });
 
             ChainStore.init().then(() => {
                 this.setState({synced: true});
