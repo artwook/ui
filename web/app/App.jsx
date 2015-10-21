@@ -92,7 +92,7 @@ class App extends React.Component {
         let localePromise = (locale) ? IntlActions.switchLocale(locale) : null;
         Promise.all([
             localePromise, // Non API
-            AccountStore.loadDbData()            
+            AccountStore.loadDbData()
         ]).then(() => {
             AccountStore.tryToSetCurrentAccount();
             this.setState({loading: false});
@@ -289,12 +289,12 @@ let routes = (
 );
 
 
-// Router.run(routes, Handler => {
-//     React.render(<Handler/>, document.getElementById("content"));
-// });
+Router.run(routes, Handler => {
+    React.render(<Handler/>, document.getElementById("content"));
+});
 
 // enable HTML5 history API
-Router.run(routes, Router.HistoryLocation, function (Handler, state) {
-    React.render(<Handler/>, document.getElementById("content"));
-    analytics(state);
-});
+// Router.run(routes, Router.HistoryLocation, function (Handler, state) {
+//     React.render(<Handler/>, document.getElementById("content"));
+//     analytics(state);
+// });
