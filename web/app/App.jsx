@@ -82,12 +82,12 @@ class App extends React.Component {
         NotificationStore.unlisten(this._onNotificationChange);
     }
 
-    componentDidMount() { 
+    componentDidMount() {
         try {
             NotificationStore.listen(this._onNotificationChange.bind(this));
 
             Promise.all([
-                AccountStore.loadDbData()            
+                AccountStore.loadDbData()
             ]).then(() => {
                 AccountStore.tryToSetCurrentAccount();
                 this.setState({loading: false});
@@ -300,3 +300,7 @@ let routes = (
 
 ReactDOM.render(<Router history={history} routes={routes}/>, document.getElementById("content"));
 
+// enable HTML5 history API
+// Router.run(routes, Router.HistoryLocation, function (Handler) {
+//     React.render(<Handler/>, document.getElementById("content"));
+// });
