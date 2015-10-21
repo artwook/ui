@@ -14,6 +14,7 @@ import iDB from "idb-instance"
 import Immutable from "immutable"
 import config from "chain/config"
 import SettingsStore from "stores/SettingsStore"
+import cookies from "cookies-js"
 
 var application_api = new ApplicationApi()
 //var fetch = require('node-fetch')
@@ -107,7 +108,7 @@ class WalletActions {
                         "memo_key": active_private.private_key.toPublicKey().toPublicKeyString(),
                         //"memo_key": memo_private.private_key.toPublicKey().toPublicKeyString(),
                         "refcode": refcode,
-                        "referrer": window && window.BTSW ? BTSW.referrer : ""
+                        "referer": cookies.get("graphene_d_r") || ""
                     }
                 })
             }).then(r => r.json());
