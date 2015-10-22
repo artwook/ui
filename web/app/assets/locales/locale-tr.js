@@ -15,7 +15,7 @@
         dashboard: "Hesaplar",
         explorer: "Araştır",
         exchange: "Al / Sat",
-        payments: "Transferler", 
+        payments: "Transferler",
         logout: "Çıkış",
         settings: "Ayarlar",
         current: "Kullanılan Hesap",
@@ -94,7 +94,8 @@
             required: "Gerekli coin günü",
             remaining: "Bekletilecek günler",
             claim: "Şimdi iste",
-            available: "İstemek için mevcut"
+            available: "İstemek için mevcut",
+            your_referal_link: "Your Referral Link"
         },
         user_issued_assets: {
             symbol: "Sembol",
@@ -445,7 +446,7 @@
         blocks: {
             title: "Blokzinciri",
             globals: "Evrensel parametreler",
-            recent: "Son bloklar", 
+            recent: "Son bloklar",
             trx: "İşlem",
             block_times: "Blok süreleri",
             block_time: "Blok süresi",

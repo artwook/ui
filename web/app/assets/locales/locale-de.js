@@ -65,7 +65,8 @@ module.exports = {
             subscribe: "Jährliche Mitgliedschaft erwerben",
             expires: "endet",
             membership_expiration: "Ablauf der Mitgliedschaft",
-            fees_cashback: "Gebühren und Rückerstattung"
+            fees_cashback: "Gebühren und Rückerstattung",
+            your_referal_link: "Your Referral Link"
         },
         user_issued_assets: {
             symbol: "Symbol",
