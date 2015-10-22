@@ -193,7 +193,7 @@ class AccountMembership extends React.Component {
                             </table>
 
                             <h4 style={{paddingTop: "1rem"}}><Translate content="account.member.fees_cashback"/></h4>
-                            <table className="table key-value-table">                                
+                            <table className="table key-value-table">
                                 <Statistics stat_object={account.statistics}/>
                                 {cvb ? (
                                     <tr>
