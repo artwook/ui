@@ -62,7 +62,8 @@ module.exports = {
             subscribe: "购买1年会籍",
             expires: "过期时间",
             membership_expiration: "会籍过期时间",
-            fees_cashback: "手续费及现金返回"
+            fees_cashback: "手续费及现金返回",
+            your_referal_link: "专属推荐链接"
         },
         connections: {
             known: "识别为",
