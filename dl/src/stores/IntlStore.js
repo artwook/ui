@@ -11,7 +11,19 @@ class IntlStore extends BaseStore {
         super();
         this.currentLocale = cookies.locale || "en";
         this.locales = ["en"];
+        // this.locales = ["en","cn","fr","ko","de","es","tr"];
         this.localesObject = {en: locale_en};
+
+        let defaultLang = (window.navigator.language || window.navigator.userLanguage).toLowerCase().replace(/-.*/,'');
+        if (defaultLang == "zh") {
+            defaultLang = "cn";
+        }
+
+        if (!this.hasLocale(defaultLang)) {
+            defaultLang = "en";
+        }
+
+        this.onSwitchLocale(defaultLang);
 
         this.bindListeners({
             onSwitchLocale: IntlActions.switchLocale,
