@@ -59,6 +59,7 @@ import Brainkey from "./components/Wallet/Brainkey";
 import AccountRefsStore from "stores/AccountRefsStore";
 import Help from "./components/Help";
 import InitError from "./components/InitError";
+import analytics from "ga-react-router";
 
 require("./components/Utility/Prototypes"); // Adds a .equals method to Array for use in shouldComponentUpdate
 require("./assets/stylesheets/app.scss");
@@ -293,6 +294,7 @@ let routes = (
 // });
 
 // enable HTML5 history API
-Router.run(routes, Router.HistoryLocation, function (Handler) {
+Router.run(routes, Router.HistoryLocation, function (Handler, state) {
     React.render(<Handler/>, document.getElementById("content"));
+    analytics(state);
 });

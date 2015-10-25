@@ -30,7 +30,8 @@ module.exports = function(options) {
         new Clean(cleanDirectories),
         new webpack.DefinePlugin({
             APP_VERSION: JSON.stringify(git.tag())
-        })
+        }),
+        new webpack.DefinePlugin({GA_TRACKING_CODE: JSON.stringify('UA-56053564-7')})
     ];
 
     if (options.prod) {
@@ -69,12 +70,12 @@ module.exports = function(options) {
         debug: options.prod ? false : true,
         module: {
             loaders: [
-                { 
+                {
                     test: /\.jsx$/,
                     include: [path.join(root_dir, "app"), path.join(root_dir, "node_modules/react-foundation-apps")],
                     loaders: options.prod ? ["babel-loader"] : ["babel-loader?cacheDirectory"]
                 },
-                { 
+                {
                     test: /\.js$/,
                     exclude: /node_modules/,
                     loader: "babel-loader",
