@@ -64,6 +64,7 @@ import createBrowserHistory from 'history/lib/createHashHistory';
 import {IntlProvider} from "react-intl";
 import intlData from "./components/Utility/intlData";
 import connectToStores from "alt/utils/connectToStores";
+import analytics from "ga-react-router";
 
 require("./components/Utility/Prototypes"); // Adds a .equals method to Array for use in shouldComponentUpdate
 require("./assets/stylesheets/app.scss");
@@ -308,6 +309,7 @@ let routes = (
 ReactDOM.render(<Router history={history} routes={routes}/>, document.getElementById("content"));
 
 // enable HTML5 history API
-// Router.run(routes, Router.HistoryLocation, function (Handler) {
+// Router.run(routes, Router.HistoryLocation, function (Handler, state) {
 //     React.render(<Handler/>, document.getElementById("content"));
+//     analytics(state);
 // });
