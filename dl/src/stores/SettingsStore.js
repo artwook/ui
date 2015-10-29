@@ -14,7 +14,7 @@ class SettingsStore {
         this.settings = Immutable.Map({
             locale: "en",
             connection: "wss://bitshares.openledger.info/ws",
-            faucet_address: "https://bitshares.openledger.info"
+            faucet_address: "http://localhost:3000"
         });
 
         this.viewSettings =  Immutable.Map({
