@@ -106,7 +106,6 @@ class WalletActions {
                         "owner_key": owner_private.private_key.toPublicKey().toPublicKeyString(),
                         "active_key": active_private.private_key.toPublicKey().toPublicKeyString(),
                         "memo_key": active_private.private_key.toPublicKey().toPublicKeyString(),
-                        //"memo_key": memo_private.private_key.toPublicKey().toPublicKeyString(),
                         "refcode": refcode,
                         "referer": cookies.get("graphene_d_r") || ""
                     }
