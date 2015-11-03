@@ -67,7 +67,9 @@
             subscribe: "Yıllık Abone ol",
             expires: "bitiş tarihi",
             membership_expiration: "Üyelik Bitiş Tarihi",
-            fees_cashback: "Ücretler ve nakit iadeler"
+            fees_cashback: "Ücretler ve nakit iadeler",
+            your_referal_link: "Your Referral Link",
+            referral_stats_for: "Referral Stats for %(name)s"
         },
         user_issued_assets: {
             symbol: "Sembol",
