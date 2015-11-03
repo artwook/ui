@@ -125,7 +125,6 @@ class App extends React.Component {
     // }
 
     render() {
-
         if (this.context.router.getCurrentPath() === "/init-error") { // temporary, until we implement right offline mode
             return (
                 <div className="grid-frame vertical">
