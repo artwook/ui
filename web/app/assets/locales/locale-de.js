@@ -66,7 +66,8 @@ module.exports = {
             expires: "endet",
             membership_expiration: "Ablauf der Mitgliedschaft",
             fees_cashback: "Gebühren und Rückerstattung",
-            your_referal_link: "Your Referral Link"
+            your_referal_link: "Your Referral Link",
+            referral_stats_for: "Referral Stats for %(name)s"
         },
         user_issued_assets: {
             symbol: "Symbol",
