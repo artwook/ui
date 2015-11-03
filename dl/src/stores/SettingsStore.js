@@ -13,7 +13,7 @@ class SettingsStore {
 
         this.settings = Immutable.Map({
             locale: "en",
-            connection: "wss://bitshares.openledger.info/ws",
+            connection: "wss://bitshares.dacplay.org/ws",
             faucet_address: "http://localhost:3000"
         });
 
@@ -48,7 +48,8 @@ class SettingsStore {
                 "tr"
             ],
             connection: [
-                "wss://bitshares.openledger.info/ws"
+                "wss://bitshares.dacplay.org/ws",
+                "ws://127.0.0.1:8090"
             ]
             // confirmMarketOrder: [
             //     {translate: "confirm_yes"},
