@@ -63,7 +63,8 @@
             subscribe: "Yıllık Abone ol",
             expires: "bitiş tarihi",
             membership_expiration: "Üyelik bitiş tarihi",
-            your_referal_link: "Your Referral Link"
+            your_referal_link: "Your Referral Link",
+            referral_stats_for: "Referral Stats for %(name)s"
         },
         user_issued_assets: {
             symbol: "Sembol",

@@ -63,7 +63,8 @@ module.exports = {
             expires: "过期时间",
             membership_expiration: "会籍过期时间",
             fees_cashback: "手续费及现金返回",
-            your_referal_link: "专属推荐链接"
+            your_referal_link: "专属推荐链接",
+            referral_stats_for: "%(name)s 的推荐统计"
         },
         connections: {
             known: "识别为",
