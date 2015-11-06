@@ -32,19 +32,19 @@ class MetaexchangeDepositRequest extends React.Component {
 		is_bts_deposit: 		React.PropTypes.string,
         receive_asset: 			ChainTypes.ChainAsset
     };
-	
-	constructor(props) 
+
+	constructor(props)
 	{
-        super(props);
-
 		let parts = props.symbol_pair.split('_');
+		props.base_symbol = parts[0];
+		props.quote_symbol = parts[1];
 
-        this.state = {
-            deposit_address: null, 
-   			memo:null, 
-			base_symbol:parts[0],
-			quote_symbol:parts[1]
-		};
+        super(props);
+        this.state = { deposit_address: null,
+						memo:null,
+						base_symbol:parts[0],
+						quote_symbol:parts[1]
+					};
 		this.apiRoot = "https://metaexchange.info/api";
 		this.marketPath = "https://metaexchange.info/markets/";
 		//this.apiRoot = "http://localhost:1235/api";
@@ -54,18 +54,18 @@ class MetaexchangeDepositRequest extends React.Component {
 	getDepositAddress()
 	{
 		Post.PostForm(this.apiRoot + '/1/submitAddress', {
-					receiving_address:this.props.account.get('name'), 
-					order_type:'buy', 
+					receiving_address:this.props.account.get('name'),
+					order_type:'buy',
 					symbol_pair:this.props.symbol_pair
 				}).then( reply=>reply.json().then(reply=>
 				{
 					//console.log(reply);
-					
+
 					this.setState( {deposit_address:reply.deposit_address, memo:reply.memo} );
-					
+
 					let wallet = WalletDb.getWallet();
 					let name = this.props.account.get('name');
-					
+
 					if( !wallet.deposit_keys ) wallet.deposit_keys = {}
 					if( !wallet.deposit_keys[this.props.gateway] )
 						wallet.deposit_keys[this.props.gateway] = {}
@@ -73,7 +73,7 @@ class MetaexchangeDepositRequest extends React.Component {
 						wallet.deposit_keys[this.props.gateway][this.state.base_symbol] = {}
 					else
 						wallet.deposit_keys[this.props.gateway][this.state.base_symbol][name] = reply
-					
+
 					WalletDb._updateWallet();
 				}));
 	}
@@ -81,11 +81,11 @@ class MetaexchangeDepositRequest extends React.Component {
     getWithdrawModalId() {
         return "withdraw" + this.getModalId();
     }
-	
+
 	getDepositModalId() {
         return "deposit" + this.getModalId();
     }
-	
+
 	getModalId() {
         return "_asset_"+this.props.issuer_account.get('name') + "_"+this.props.receive_asset.get('symbol');
     }
@@ -93,7 +93,7 @@ class MetaexchangeDepositRequest extends React.Component {
     onWithdraw() {
         ZfApi.publish(this.getWithdrawModalId(), "open");
     }
-	
+
 	onDeposit() {
         ZfApi.publish(this.getDepositModalId(), "open");
     }
@@ -102,23 +102,23 @@ class MetaexchangeDepositRequest extends React.Component {
 	{
 		let wallet = WalletDb.getWallet();
 		var withdrawAddr = "";
-		
+
 		try
 		{
 			withdrawAddr = wallet.deposit_keys[this.props.gateway][this.state.base_symbol]['withdraw_address'];
 		}
 		catch (Error) {}
-		
+
 		return this.marketPath + this.props.symbol_pair.replace('_','/')+'?receiving_address='+encodeURIComponent(this.props.account.get('name')+','+withdrawAddr);
 	}
 
     render() {
         if( !this.props.account || !this.props.issuer_account || !this.props.receive_asset )
             return <tr><td></td><td></td><td></td><td></td></tr>
-			
+
 		let wallet = WalletDb.getWallet();
-        
-        if( !this.state.deposit_address )  
+
+        if( !this.state.deposit_address )
 		{
 			try
 			{
@@ -129,13 +129,13 @@ class MetaexchangeDepositRequest extends React.Component {
 			catch (Error) {}
         }
         if( !this.state.deposit_address )
-		{ 
-			this.getDepositAddress(); 
+		{
+			this.getDepositAddress();
 		}
-        
+
         let withdraw_modal_id = this.getWithdrawModalId();
 		let deposit_modal_id = this.getDepositModalId();
-		
+
         return <tr>
             <td>{this.props.deposit_asset} </td>
 
@@ -160,9 +160,9 @@ class MetaexchangeDepositRequest extends React.Component {
                     </div>
                 </Modal>
             </td>
-			
+
 			<td><button className={"button outline"}><a target="__blank" href={this.getMetaLink()}>Open in metaexchange</a></button></td>
-			
+
             <td> <AccountBalance account={this.props.account.get('name')} asset={this.state.base_symbol} /> </td>
             <td> <button className={"button outline"} onClick={this.onWithdraw.bind(this)}> <Translate content="gateway.withdraw" /> </button>
                 <Modal id={withdraw_modal_id} overlay={true}>
@@ -485,6 +485,7 @@ class AccountDepositWithdraw extends React.Component {
                 </Tabs.Tab>
 
             </Tabs>
+
 		</div>
         )
     }
