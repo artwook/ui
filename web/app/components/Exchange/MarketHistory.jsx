@@ -71,7 +71,7 @@ class MarketHistory extends React.Component {
             let index = 0;
             let keyIndex = -1;
             let flipped = base.get("id").split(".")[2] > quote.get("id").split(".")[2];
-            historyRows = myHistory.filter(a => {            
+            historyRows = myHistory.filter(a => {
                 let opType = a.getIn(["op", 0]);
                 return (opType === operations.fill_order);
             }).filter(a => {
@@ -164,20 +164,16 @@ class MarketHistory extends React.Component {
                         <Translate content="exchange.history" />
                     </div>
                 </div>
-                <div className="grid-block shrink left-orderbook-header market-right-padding-only">
+                <div className="grid-block left-orderbook-header market-right-padding-only" ref="history">
                     <table className="table order-table text-right market-right-padding">
                         <thead>
                             <tr>
                                 <th style={{textAlign: "right"}}><Translate content="exchange.price" /><br/><span className="header-sub-title">{baseSymbol}/{quoteSymbol}</span></th>
                                 <th style={{textAlign: "right"}}><Translate content="transfer.amount" /><br/><span className="header-sub-title">({quoteSymbol})</span></th>
                                 <th style={{textAlign: "right"}}><Translate content="exchange.value" /><br/><span className="header-sub-title">({baseSymbol})</span></th>
-                                <th style={{textAlign: "right"}}><Translate content={activeTab === "history" ? "explorer.block.date" : "explorer.block.title"} /><br/><span style={{visibility: "hidden"}} className="header-sub-title">({quoteSymbol})</span></th>
+                                <th style={{textAlign: "right"}}><Translate content={activeTab === "history" ? "exchange.time" : "explorer.block.title"} /><br/><span style={{visibility: "hidden"}} className="header-sub-title">({quoteSymbol})</span></th>
                             </tr>
                         </thead>
-                    </table>
-                </div>
-                <div className="table-container grid-content market-right-padding-only" ref="history">
-                    <table className="table order-table text-right market-right-padding">
                         <tbody>
                             {historyRows}
                         </tbody>
