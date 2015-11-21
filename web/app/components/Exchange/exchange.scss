@@ -207,6 +207,16 @@ p.order-table-title {
       padding: 10px 0 !important;
       font-weight: bold;
     }
+  border-bottom: 1px solid #777;
+  border-top: 1px solid #777;
+
+  & > td {
+    padding:10px 5px;
+  }
+}
+
+.orderbook-latest-price-num {
+  font-size:1rem; color:yellow;
 }
 
 .left-orderbook-header {

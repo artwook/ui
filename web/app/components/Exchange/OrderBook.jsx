@@ -118,7 +118,7 @@ class OrderBook extends React.Component {
             Ps.initialize(bidsContainer);
         } else {
             let bidsContainer = ReactDOM.findDOMNode(this.refs.hor_bids);
-            Ps.initialize(bidsContainer);            
+            Ps.initialize(bidsContainer);
         }
     }
 
@@ -137,7 +137,7 @@ class OrderBook extends React.Component {
             Ps.update(bidsContainer);
         } else {
             let bidsContainer = ReactDOM.findDOMNode(this.refs.hor_bids);
-            Ps.update(bidsContainer);            
+            Ps.update(bidsContainer);
         }
     }
 
@@ -323,7 +323,7 @@ class OrderBook extends React.Component {
                                 {askRows}
                                 <tr onClick={this._centerView.bind(this)} key="spread" className="orderbook-latest-price" ref="centerRow">
                                     <td colSpan="3" className="text-center spread">
-                                        {this.props.latest ? <span className={this.props.changeClass}><PriceText preFormattedPrice={this.props.latest} /> {baseSymbol}/{quoteSymbol}</span> : null}
+                                        <div><Translate content="exchange.latest" /></div>{this.props.latest ? <span className="orderbook-latest-price-num"><PriceText preFormattedPrice={this.props.latest} /> {baseSymbol}/{quoteSymbol}</span> : null}
                                     </td>
                                 </tr>
                                 {bidRows}
