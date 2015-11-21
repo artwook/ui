@@ -659,10 +659,18 @@
         borrow: "Ödünç Al",
         no_balance: "Yetersiz bakiye",
         invalid_amount: "Geçersiz miktar",
-        invalid_price: "Geçersiz fiyat"
+        invalid_price: "Geçersiz fiyat",
+        stats:{
+            t: "T",
+            o: "O",
+            c: "C",
+            h: "H",
+            l: "L",
+            v: "V"
+        }
     },
     fees: {
-     title: "Ücret Tarifesi"
+        title: "Ücret Tarifesi",
     },
     markets: {
         title: "Piyasalar",

@@ -661,10 +661,18 @@
         borrow: "Borrow",
         no_balance: "Insufficient balance",
         invalid_amount: "Invalid amount",
-        invalid_price: "Invalid price"
+        invalid_price: "Invalid price",
+        stats:{
+            t: "T",
+            o: "O",
+            c: "C",
+            h: "H",
+            l: "L",
+            v: "V"
+        }
     },
     fees: {
-     title: "Fee Schedule"
+        title: "Fee Schedule"
     },
     markets: {
         title: "Markets",

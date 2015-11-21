@@ -597,10 +597,17 @@ module.exports = {
         overbought: "Overbought",
         oversold: "Oversold",
         index: "Index"
-
+        stats:{
+            t: "T",
+            o: "O",
+            c: "C",
+            h: "H",
+            l: "L",
+            v: "V"
+        }
     },
     fees: {
-     title: "Gebühren"
+        title: "Gebühren"
     },
     markets: {
         title: "Märkte",

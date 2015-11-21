@@ -321,14 +321,14 @@ class Exchange extends React.Component {
         } else {
             feeAmount = this._getFee();
         }
-            
+
         feeID = this._verifyFee(feeAmount, sellAsset, sellAssetAmount, sellBalance, coreBalance);
 
         if (!feeID) {
             return notify.addNotification({
                 message: "Insufficient funds to pay fees",
                 level: "error"
-            });            
+            });
         }
         let {lowestAsk, highestBid} = this._parseMarket();
         if (type === "buy") {
@@ -374,7 +374,7 @@ class Exchange extends React.Component {
         } else {
             feeAmount = this._getFee();
         }
-            
+
         let feeID = this._verifyFee(feeAmount, sellAsset, sellAssetAmount, sellBalance, coreBalance);
 
         if (value && feeID) {
@@ -389,7 +389,7 @@ class Exchange extends React.Component {
         } else {
             feeAmount = this._getFee();
         }
-            
+
         let feeID = this._verifyFee(feeAmount, sellAsset, sellAssetAmount, sellBalance, coreBalance);
 
         if (value && feeID) {
@@ -556,7 +556,7 @@ class Exchange extends React.Component {
 
     getSellAmount(price, total = 0) {
         let amountPrecision = utils.get_asset_precision(this.props.quoteAsset.get("precision"));
-        let satAmount = utils.get_satoshi_amount(total, this.props.baseAsset);    
+        let satAmount = utils.get_satoshi_amount(total, this.props.baseAsset);
         return ((satAmount / price.base.amount) * price.quote.amount) / amountPrecision;
     }
 
@@ -907,7 +907,7 @@ class Exchange extends React.Component {
                 }
             }
 
-            ({showCallLimit, settlementPrice, squeezePrice} = this._getSettlementInfo());            
+            ({showCallLimit, settlementPrice, squeezePrice} = this._getSettlementInfo());
         }
 
         let quoteIsBitAsset = quoteAsset.get("bitasset_data_id") ? true : false;
@@ -1087,14 +1087,14 @@ class Exchange extends React.Component {
                                                 </li>) : null}
                                          </ul>
                                          <ul className="market-stats stats bottom-stats">
-                                            {quoteIsBitAsset ? 
+                                            {quoteIsBitAsset ?
                                                 (<li className="stat clickable" style={{borderLeft: "1px solid grey", borderRight: "none"}} onClick={this._borrowQuote.bind(this)}>
                                                     <div className="indicators">
                                                        <Translate content="exchange.borrow" />&nbsp;{quoteAsset.get("symbol")}
                                                     </div>
                                                 </li>) : null}
 
-                                            {baseIsBitAsset ? 
+                                            {baseIsBitAsset ?
                                                 (<li className="stat clickable" style={{borderLeft: "1px solid grey", borderRight: "none"}} onClick={this._borrowBase.bind(this)}>
                                                     <div className="indicators">
                                                        <Translate content="exchange.borrow" />&nbsp;{baseAsset.get("symbol")}

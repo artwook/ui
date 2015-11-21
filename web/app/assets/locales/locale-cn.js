@@ -630,7 +630,15 @@ module.exports = {
         bids: "买单",
         no_data: "暂无数据",
         time: "时间间隔",
-        borrow: "借入"
+        borrow: "借入",
+        stats:{
+            t: "",
+            o: "开",
+            c: "收",
+            h: "高",
+            l: "低",
+            v: "量"
+        }
     },
     markets: {
         title: "交易所",
