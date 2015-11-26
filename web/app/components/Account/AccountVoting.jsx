@@ -239,7 +239,7 @@ class AccountVoting extends React.Component {
                 <Tabs setting="votingTab" style={{maxWidth: "800px"}} contentClass="grid-block shrink small-vertical medium-horizontal">
 
                         <Tab title="account.votes.proxy_short">
-                            <div className="content-block">
+                            <div className="grid-content">
                                 <HelpContent style={{maxWidth: "800px"}} path="components/AccountVotingProxy" />
                                 <AccountVotingProxy
                                     currentProxy={this.state.proxy_account_name}
@@ -251,7 +251,7 @@ class AccountVoting extends React.Component {
                         </Tab>
 
                         <Tab title="explorer.witnesses.title">
-                            <div className={cnames("content-block", {disabled : proxy_is_set})}>
+                            <div className={cnames("grid-content", {disabled : proxy_is_set})}>
                                 <HelpContent style={{maxWidth: "800px"}} path="components/AccountVotingWitnesses" />
                                 <AccountsList
                                     type="witness"
@@ -265,7 +265,7 @@ class AccountVoting extends React.Component {
                         </Tab>
 
                         <Tab title="explorer.committee_members.title">
-                            <div className={cnames("content-block", {disabled : proxy_is_set})}>
+                            <div className={cnames("grid-content", {disabled : proxy_is_set})}>
                                 <HelpContent style={{maxWidth: "800px"}} path="components/AccountVotingCommittee" />
                                 <AccountsList
                                     type="committee"
@@ -279,7 +279,7 @@ class AccountVoting extends React.Component {
                         </Tab>
 
                         <Tab title="account.votes.workers_short">
-                            <div className={cnames("content-block", {disabled : proxy_is_set})}>
+                            <div className={cnames("grid-content", {disabled : proxy_is_set})}>
                                 <HelpContent style={{maxWidth: "800px"}} path="components/AccountVotingWorkers" />
                                 <div className="grid-block no-padding no-margin small-up-1 medium-up-2 large-up-2">
                                     {workers}
