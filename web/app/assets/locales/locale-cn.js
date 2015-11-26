@@ -221,7 +221,8 @@ module.exports = {
         as_collateral: "债仓",
         open_orders: "委单",
         total_value: "市值",
-        asset_details: "资产详情"
+        asset_details: "资产详情",
+        percent: "供给占比"
     },
     transfer: {
         from: "来自",
@@ -638,7 +639,16 @@ module.exports = {
             h: "高",
             l: "低",
             v: "量"
-        }
+        },
+        indicators: "技术指标",
+        rsi: "相对强弱指数(rsi)",
+        ema: "指数移动平均线(ema)",
+        sma: "算数移动平均线(sma)",
+        atr: "平均真实波幅(atr)",
+        period: "周期 (天)",
+        overbought: "超买",
+        oversold: "超卖",
+        index: "指数"
     },
     markets: {
         title: "交易所",
