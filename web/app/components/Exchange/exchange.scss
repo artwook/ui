@@ -119,6 +119,8 @@ td.orderHistoryCall {
     > tbody > tr > td {
         font-size: 0.75rem;
     }
+
+    & > tbody > tr > td { border-bottom:none; }
 }
 
 .my-orders {
