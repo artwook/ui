@@ -138,7 +138,7 @@ class Assets extends React.Component {
                                 </table>                        
                             </div>
                             <div className="grid-content">
-                                <table className="table">
+                                <table className="table table-hover">
                                     <tbody>
                                         {mia}
                                     </tbody>
@@ -160,7 +160,7 @@ class Assets extends React.Component {
                             </table>
                         </div>
                         <div className="grid-content">
-                            <table className="table">
+                            <table className="table table-hover">
                                 <tbody>
                                     {uia}
                                 </tbody>
