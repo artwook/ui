@@ -364,7 +364,9 @@ class OrderBook extends React.Component {
                                 {askRows}
                                 <tr onClick={this._centerView.bind(this)} key="spread" className="orderbook-latest-price" ref="centerRow">
                                     <td colSpan="3" className="text-center spread">
-                                        <div><Translate content="exchange.latest" /></div>{this.props.latest ? <span className="orderbook-latest-price-num"><PriceText preFormattedPrice={this.props.latest} /> {baseSymbol}/{quoteSymbol}</span> : null}
+                                        <div><Translate content="exchange.latest" /></div>
+                                        {this.props.latest ? <span className={classnames("orderbook-latest-price-num", this.props.changeClass)}><PriceText preFormattedPrice={this.props.latest} /> </span> : null}
+                                        <div>{baseSymbol}/{quoteSymbol}</div>
                                     </td>
                                 </tr>
                                 {bidRows}
