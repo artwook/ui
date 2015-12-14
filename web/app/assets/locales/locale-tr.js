@@ -15,7 +15,7 @@
         dashboard: "Hesaplar",
         explorer: "Araştır",
         exchange: "Al / Sat",
-        payments: "Transferler", 
+        payments: "Transferler",
         logout: "Çıkış",
         settings: "Ayarlar",
         current: "Kullanılan Hesap",
@@ -407,7 +407,7 @@
         blocks: {
             title: "Blokzinciri",
             globals: "Evrensel parametreler",
-            recent: "Son bloklar", 
+            recent: "Son bloklar",
             trx: "İşlem",
             block_times: "Blok süreleri",
             block_time: "Blok süresi",
