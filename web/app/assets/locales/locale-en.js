@@ -70,7 +70,8 @@
             subscribe: "Buy Annual Subscription",
             expires: "expires",
             membership_expiration: "Membership Expiration",
-            fees_cashback: "Fees and cashback"
+            fees_cashback: "Fees and cashback",
+            your_referal_link: "Your Referral Link"
         },
         user_issued_assets: {
             symbol: "Symbol",

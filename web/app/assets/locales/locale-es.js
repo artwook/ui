@@ -62,7 +62,8 @@
             upgrade_lifetime: "Comprar Suscripción Vitalicia",
             subscribe: "Comprar Suscripción Anual",
             expires: "expira",
-            membership_expiration: "Vencimiento de la Membresía"
+            membership_expiration: "Vencimiento de la Membresía",
+            your_referal_link: "Your Referral Link"
         },
         user_issued_assets: {
             symbol: "Simbolo",
