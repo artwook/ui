@@ -64,6 +64,7 @@ import createBrowserHistory from 'history/lib/createHashHistory';
 import {IntlProvider} from "react-intl";
 import intlData from "./components/Utility/intlData";
 import connectToStores from "alt/utils/connectToStores";
+import cookies from "cookies-js";
 import analytics from "ga-react-router";
 
 require("./components/Utility/Prototypes"); // Adds a .equals method to Array for use in shouldComponentUpdate
@@ -313,8 +314,11 @@ let routes = (
     </Route>
 );
 
+let triggerGA = () => {
+    analytics({path: location.pathname});
+};
 
-ReactDOM.render(<Router history={history} routes={routes}/>, document.getElementById("content"));
+ReactDOM.render(<Router history={history} onUpdate={triggerGA} routes={routes}/>, document.getElementById("content"));
 
 // enable HTML5 history API
 // Router.run(routes, Router.HistoryLocation, function (Handler, state) {
