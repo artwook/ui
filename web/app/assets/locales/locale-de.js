@@ -596,7 +596,7 @@ module.exports = {
         period: "Periode (Tage)",
         overbought: "Overbought",
         oversold: "Oversold",
-        index: "Index"
+        index: "Index",
         stats:{
             t: "T",
             o: "O",
