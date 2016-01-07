@@ -228,7 +228,25 @@ module.exports = {
         open_orders: "委单",
         total_value: "市值",
         asset_details: "资产详情",
-        percent: "供给占比"
+        percent: "供给占比",
+        id: "账户 ID",
+        whitelist: {
+            title: "白名单",
+            black: "黑名单",
+            add: "加到白名单",
+            add_black: "加到黑名单",
+            empty: "%(account)s 没有设置白名单。",
+            empty_black: "%(account)s 没有设置黑名单。",
+            white_by: "被列白名单",
+            black_by: "被列黑名单",
+            empty_white_by: "%(account)s 未被列入任何白名单",
+            empty_black_by: "%(account)s 未被列入任何黑名单"
+        },
+        vesting: {
+            title: "待解冻余额",
+            balance_number: "余额 #%(id)s",
+            no_balances: "该账户无待解冻余额"
+        }
     },
     transfer: {
         from: "来自",
@@ -254,7 +272,8 @@ module.exports = {
         available: "可用余额: ",
         broadcasting: "交易广播中...",
         close: "关闭",
-        pay_from: "支付自"
+        pay_from: "支付自",
+        memo_unlock: "解锁钱包以查看交易备注"
     },
     transaction: {
         sent: "发送",
@@ -418,7 +437,15 @@ module.exports = {
         },
         asset_claim_fees: "从 %(asset)s 资产手续费池中领取 %(balance_amount)s 资产手续费",
         settlement_date: "清算时间",
-        set_proxy: "设置 %(proxy)s 为投票代理人"
+        set_proxy: "设置 %(proxy)s 为投票代理人",
+        unlisted_by: "%(lister)s 从列表移除 %(listee)s",
+        blacklisted_by: "%(lister)s 将 %(listee)s 加入黑名单",
+        whitelist_states: {
+            no_listing: "从列表移除",
+            white_listed: "加入白名单",
+            black_listed: "加入黑名单",
+            white_and_black_listed: "加入白/黑名单"
+        }
     },
     explorer: {
         accounts: {
@@ -571,7 +598,8 @@ module.exports = {
         faucet_address: "水龙头地址",
         showSettles: "在深度图中显示清算订单",
         yes: "是",
-        no: "否"
+        no: "否",
+        walletLockTimeout: "钱包自动锁定时间（秒）"
     },
     pagination: {
         newer: "更近",
@@ -654,7 +682,10 @@ module.exports = {
         period: "周期 (天)",
         overbought: "超买",
         oversold: "超卖",
-        index: "指数"
+        index: "指数",
+        no_balance: "余额不足",
+        invalid_amount: "数量错误",
+        invalid_price: "价格错误"
     },
     markets: {
         title: "交易所",
