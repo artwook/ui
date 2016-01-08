@@ -13,10 +13,10 @@ new WebpackDevServer(compiler, {
     historyApiFallback: true,
     quiet: false,
     stats: {colors: true},
-    port: 8080
-}).listen(8080, '0.0.0.0', function (err, result) {
+    port: 8081
+}).listen(8081, '0.0.0.0', function (err, result) {
     if (err) {
         console.log(err);
     }
-    console.log('Listening at 0.0.0.0:8080');
+    console.log('Listening at 0.0.0.0:8081');
 });
