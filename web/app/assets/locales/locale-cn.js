@@ -9,7 +9,7 @@ module.exports = {
         tr: "Turkish"
     },
     header: {
-        title: "东胜神州股权交易所 (DSSZ)",
+        title: "西牛贺州股权交易所 (XNHZ)",
         dashboard: "概览",
         explorer: "浏览",
         exchange: "交易",
@@ -606,7 +606,7 @@ module.exports = {
         older: "更早"
     },
     footer: {
-        title: "东胜神州股权交易所 (DSSZ)",
+        title: "西牛贺州股权交易所 (XNHZ)",
         block: "最新区块",
         loading: "载入中..."
     },

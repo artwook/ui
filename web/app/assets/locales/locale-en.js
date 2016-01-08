@@ -10,7 +10,7 @@
 
     },
     header: {
-        title: "DSSZ Equity Exchange (DSSZ)",
+        title: "XNHZ Equity Exchange (XNHZ)",
         account: "Account",
         dashboard: "Dashboard",
         explorer: "Explore",
@@ -600,7 +600,7 @@
         walletLockTimeout: "Wallet auto-lock time (seconds)"
     },
     footer: {
-        title: "DSSZ Equity Exchange (DSSZ)",
+        title: "XNHZ Equity Exchange (XNHZ)",
         block: "Head block",
         loading: "Loading..."
     },
