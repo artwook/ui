@@ -10,7 +10,7 @@
 
     },
     header: {
-        title: "BitShares 2.0",
+        title: "DSSZ Equity Exchange (DSSZ)",
         account: "Account",
         dashboard: "Dashboard",
         explorer: "Explore",
@@ -600,7 +600,7 @@
         walletLockTimeout: "Wallet auto-lock time (seconds)"
     },
     footer: {
-        title: "BitShares 2.0",
+        title: "DSSZ Equity Exchange (DSSZ)",
         block: "Head block",
         loading: "Loading..."
     },
