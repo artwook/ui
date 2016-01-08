@@ -171,12 +171,16 @@ h1, h2, h3, h4, h5, h6 {
 .menu-group.primary {
   background-color: darken($panel-bg-color, 20%);
   .menu-bar {
-  background-color: darken($panel-bg-color, 20%);
+    background-color: darken($panel-bg-color, 20%);
+    & > li > a {
+      color: black;
+      &:hover { color:white; }
+    }
   }
-    .button {
+  .button {
     background-color: darken($panel-bg-color, 20%);
     &:hover {
-    background-color: lighten($panel-bg-color, 80%);
+      background-color: lighten($panel-bg-color, 80%);
     }
   }
 }
@@ -247,6 +251,19 @@ h1, h2, h3, h4, h5, h6 {
 .grp-menu-item button {
   &:hover, &:focus, &:active {
     background-color: #4c4c4c !important;
+  }
+}
+
+.grp-menu-item {
+  .button:hover {
+    background: #414141 !important;
+  }
+  > a, .button {
+    color: black !important;
+    &:hover {
+      background: #414141;
+      color: #fff;
+    }
   }
 }
 
