@@ -28,7 +28,7 @@ module.exports = {
         update_asset: "更新资产"
     },
     account: {
-        welcome: "欢迎访问 东胜神州股权交易所",
+        welcome: "欢迎访问 西牛贺州股权交易所",
         assets: "资产",
         market_value: "市值",
         hour_24: "日涨跌幅%",
