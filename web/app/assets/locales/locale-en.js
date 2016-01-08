@@ -35,7 +35,7 @@
     propose: "propose",
     cancel: "cancel",
     account: {
-        welcome: "Welcome to BitShares 2.0",
+        welcome: "Welcome to DSSZ Equity Exchange",
         asset: "Asset",
         market_value: "Market Value",
         hour_24: "24hr Change",

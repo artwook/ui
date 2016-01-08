@@ -5,7 +5,7 @@ var Immutable = require("immutable");
 var _ =require("lodash");
 
 const STORAGE_KEY = "__graphene__";
-const CORE_ASSET = "BTS"; // Setting this to BTS to prevent loading issues when used with BTS chain which is the most usual case currently
+const CORE_ASSET = "CORE"; // Setting this to BTS to prevent loading issues when used with BTS chain which is the most usual case currently
 
 var ls = typeof localStorage === "undefined" ? null : localStorage;
 
@@ -15,8 +15,8 @@ class SettingsStore {
 
         this.settings = Immutable.Map({
             locale: "cn",
-            connection: "wss://bitshares.dacplay.org/ws",
-            faucet_address: "https://bts2faucet.dacplay.org",
+            connection: "wss://cr1.dacplay.org/ws",
+            faucet_address: "https://f1.dacplay.org",
             unit: CORE_ASSET,
             showSettles: false,
             walletLockTimeout: 60 * 10
@@ -53,22 +53,14 @@ class SettingsStore {
         this.defaults = {
             locale: [
                 "en",
-                "cn",
-                "fr",
-                "ko",
-                "de",
-                "es",
-                "tr"
+                "cn"
             ],
             connection: [
-                "wss://bitshares.dacplay.org/ws"
+                "wss://cr1.dacplay.org/ws"
             ],
             unit: [
                 CORE_ASSET,
-                "USD",
-                "CNY",
-                "BTC",
-                "EUR"
+                "CNY"
             ],
             showSettles: [
                 {translate: "yes"},
