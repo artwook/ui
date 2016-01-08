@@ -91,7 +91,7 @@ class App extends React.Component {
             NotificationStore.listen(this._onNotificationChange.bind(this));
 
             // Try to retrieve locale from cookies
-            let locale = "cn";
+            let locale = "en";
             if (cookies) {
                 locale = cookies.get("graphene_locale");
             }
