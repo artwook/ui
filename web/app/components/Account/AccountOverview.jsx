@@ -41,6 +41,7 @@ class AccountOverview extends React.Component {
         let balanceList = Immutable.List();
 
         let preferredUnit = settings.get("unit") || "1.3.0";
+        let preferredAsset = ChainStore.getAsset(preferredUnit);
         if (account_balances) {
             account_balances.forEach( balance => {
                 let balanceAmount = ChainStore.getObject(balance);
@@ -53,7 +54,7 @@ class AccountOverview extends React.Component {
                 const core_asset = ChainStore.getAsset("1.3.0");
                 let assetInfoLinks = asset && <ul>
                     <li><a href={`/asset/${asset.get("symbol")}`}><Translate content="account.asset_details"/></a></li>
-                    <li><a href={`/market/${asset.get("symbol")}_${core_asset?core_asset.get("symbol"):"BTS"}`}><Translate content="exchange.market"/></a></li>
+                    <li><a href={`/market/${asset.get("symbol")}_${preferredAsset?preferredAsset.get("symbol"):"CORE"}`}><Translate content="exchange.market"/></a></li>
                     {isBitAsset && <li><a href onClick={this._onSettleAsset.bind(this, asset.get("id"))}><Translate content="account.settle"/></a></li>}
                 </ul>;
 
