@@ -562,3 +562,8 @@ td.orderHistoryBid {
 .price-decimal, .price-integer, .price-trailing {
   color:grey !important;
 }
+
+.orderbook-latest-price td {
+  background-color:#eee !important;
+  color:#333;
+}
