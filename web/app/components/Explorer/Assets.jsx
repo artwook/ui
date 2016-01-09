@@ -81,7 +81,7 @@ class Assets extends React.Component {
         let placeholder = counterpart.translate("markets.filter").toUpperCase();
 
         let uia = assets.filter(a => {
-            return !a.market_asset  && a.symbol.indexOf(this.state.filterUIA) !== -1;
+            return !a.market_asset  && a.symbol.indexOf(this.state.filterUIA) !== -1 && a.symbol.indexOf("PEQ") !== -1;
         }).map((asset) => {
             return (
                 <tr key={asset.symbol}>
