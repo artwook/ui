@@ -123,7 +123,7 @@ class Assets extends React.Component {
         return (
             <div className="grid-block vertical">
                 <div className="grid-block page-layout">
-                    <div className="grid-block medium-6 main-content vertical">
+                    <div className="grid-block medium-6 main-content vertical" style={{display:"none"}}>
                             <div className="grid-content shrink no-overflow" style={{paddingBottom: 0}}>
                                 <h3><Translate component="span" content="explorer.assets.market" /></h3>
                                 <input style={{maxWidth: "400px"}} placeholder={placeholder} type="text" value={this.state.filterMPA} onChange={this._onFilter.bind(this, "filterMPA")}></input>
@@ -145,7 +145,7 @@ class Assets extends React.Component {
                                 </table>
                             </div>
                     </div>
-                    <div className="grid-block medium-6 right-column vertical">
+                    <div className="grid-block medium-12 right-column vertical">
                         <div className="grid-content shrink no-overflow" style={{paddingBottom: 0}}>
                             <h3><Translate component="span" content="explorer.assets.user" /></h3>
                             <input style={{maxWidth: "400px"}} placeholder={placeholder} type="text" value={this.state.filterUIA} onChange={this._onFilter.bind(this, "filterUIA")}></input>
