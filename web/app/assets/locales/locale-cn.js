@@ -18,18 +18,18 @@ module.exports = {
         settings: "设置",
         current: "当前账户",
         create_account: "创建账户",
-        create_asset: "创建资产",
+        create_asset: "创建股权",
         lock: "锁定钱包",
         unlock: "解锁",
         account: "账户",
         help: "帮助",
         locked_tip: "钱包已锁定，点击解锁。",
         unlocked_tip: "钱包已解锁，点击锁定。",
-        update_asset: "更新资产"
+        update_asset: "更新股权"
     },
     account: {
         welcome: "欢迎访问 东胜神州股权交易所",
-        assets: "资产",
+        assets: "股权",
         market_value: "市值",
         hour_24: "日涨跌幅%",
         recent: "近期活动",
@@ -84,11 +84,11 @@ module.exports = {
             known: "识别为",
             black: "被屏蔽"
         },
-        asset: "资产",
+        asset: "股权",
         more: "查看更多",
         user_issued_assets: {
-            symbol: "资产代码",
-            name: "资产名称",
+            symbol: "股权代码",
+            name: "股权名称",
             description: "描述",
             max_supply: "最大供给量",
             precision: "精度",
@@ -122,7 +122,7 @@ module.exports = {
             advanced: "高级设定",
             need_asset: "这两个资产中至少有一个必须为 %(name)s",
             perm_warning: "警告：有些设定的禁用操作不可逆，生效后将无法重新启用。",
-            issued_assets: "我发行的资产"
+            issued_assets: "我发行的股权"
         },
         perm: {
             active: "活跃权限",
@@ -227,7 +227,7 @@ module.exports = {
         as_collateral: "债仓",
         open_orders: "委单",
         total_value: "市值",
-        asset_details: "资产详情",
+        asset_details: "股权详情",
         percent: "供给占比",
         id: "账户 ID",
         whitelist: {
@@ -291,7 +291,7 @@ module.exports = {
         create_key: "创建一个公钥",
         reg_account: "注册账户",
         was_reg_account: "注册账户，来自",
-        create_asset: "资产创建",
+        create_asset: "股权创建",
         limit_order: "限价单",
         limit_order_buy: "提交限价买单 #%(num)s, 买入数量: %(buy_amount)s, 价格: ",
         limit_order_sell: "提交限价卖单 #%(num)s, 卖出数量: %(sell_amount)s, 价格: ",
@@ -306,7 +306,7 @@ module.exports = {
         whitelist_account: "加入白名单",
         whitelisted_by: "加入到账户白名单",
         transfer_account: "转移账户",
-        update_asset: "更新资产",
+        update_asset: "更新股权",
         update_feed_producers: "更新资产喂价人",
         feed_producer: "成为资产喂价人",
         asset_issue: "发行",
@@ -500,7 +500,7 @@ module.exports = {
             time: "时间"
         },
         assets: {
-            title: "资产",
+            title: "公司股权",
             market: "智能币 SmartCoins",
             user: "公司股权",
             symbol: "代码",

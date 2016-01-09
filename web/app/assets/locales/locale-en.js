@@ -20,8 +20,8 @@
         settings: "Settings",
         current: "Current Account",
         create_account: "Create Account",
-        create_asset: "Create Asset",
-        update_asset: "Update Asset",
+        create_asset: "Create Equity",
+        update_asset: "Update Equity",
         lock: "Lock",
         unlock: "Unlock",
         help: "Help",
@@ -36,7 +36,7 @@
     cancel: "cancel",
     account: {
         welcome: "Welcome to DSSZ Equity Exchange",
-        asset: "Asset",
+        asset: "Equity",
         market_value: "Market Value",
         hour_24: "24hr Change",
         recent: "Recent activity",
@@ -102,7 +102,7 @@
         },
         user_issued_assets: {
             symbol: "Symbol",
-            name: "Asset Name",
+            name: "Equity Name",
             description: "Description",
             max_supply: "Maximum supply",
             precision: "Precision",
@@ -497,7 +497,7 @@
             settlement_price: "Settlement price"
         },
         assets: {
-            title: "Assets",
+            title: "Equity",
             market: "SmartCoins",
             user: "Company Equity",
             symbol: "Symbol",
