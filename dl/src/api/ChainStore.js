@@ -290,10 +290,19 @@ class ChainStore
       Apis.instance().db_api().exec( "lookup_asset_symbols", [ [id_or_symbol] ] )
           .then( asset_objects => {
               // console.log( "lookup symbol ", id_or_symbol )
-              if( asset_objects.length && asset_objects[0] )
-                 this._updateObject( asset_objects[0], true )
-              else
+              if( asset_objects.length && asset_objects[0] ) {
+                  if (asset_objects[0].symbol.indexOf("PEQ") !== -1) {
+                      Apis.instance().db_api().exec( "get_asset_balance_objects", [ asset_objects[0].id ] )
+                      .then( results => {
+                          asset_objects[0].shareholders = results;
+                          this._updateObject( asset_objects[0], true )
+                      })
+                  }
+
+                  this._updateObject( asset_objects[0], true )
+              } else {
                  this.assets_by_symbol = this.assets_by_symbol.set( id_or_symbol, null )
+              }
       }).catch( error => {
          console.log( "Error: ", error )
          this.assets_by_symbol = this.assets_by_symbol.delete( id_or_symbol )
@@ -736,7 +745,7 @@ class ChainStore
                           set.add( co.id )
                       });
                   });
-                  
+
                   account.proposals = account.proposals.withMutations(set => {
                       proposals.forEach(p => {
                           this._updateObject( p, false )
@@ -947,7 +956,7 @@ class ChainStore
       // if (!(object.id.split(".")[0] == 2) && !(object.id.split(".")[1] == 6)) {
       //   console.log( "update: ", object )
       // }
-      
+
       // DYNAMIC GLOBAL OBJECT
       if( object.id == "2.1.0" ) {
          object.participation = 100*(BigInteger(object.recent_slots_filled).bitCount() / 128.0)
@@ -1171,7 +1180,7 @@ class ChainStore
     getHeadBlockDate() {
         return timeStringToDate( this.head_block_time_string )
     }
-    
+
     getEstimatedChainTimeOffset() {
         if( this.chain_time_offset.length === 0 ) return 0
         // Immutable is fast, sorts numbers correctly, and leaves the original unmodified
