@@ -14,7 +14,7 @@ class SettingsStore {
         this.exportPublicMethods({getSetting: this.getSetting.bind(this)});
 
         this.settings = Immutable.Map({
-            locale: "cn",
+            locale: "en",
             connection: "wss://cr1.dacplay.org/ws",
             faucet_address: "https://f1.dacplay.org",
             unit: CORE_ASSET,
