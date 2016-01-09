@@ -502,7 +502,7 @@ module.exports = {
         assets: {
             title: "资产",
             market: "智能币 SmartCoins",
-            user: "用户发行资产",
+            user: "公司股权",
             symbol: "代码",
             id: "ID",
             issuer: "发行人",
@@ -691,7 +691,7 @@ module.exports = {
         title: "交易所",
         filter: "筛选",
         core_rate: "CORE 汇率",
-        supply: "供应量",
+        supply: "已分派",
         search: "搜索",
         base: "基准资产",
         market_search: "交易对市场搜索",

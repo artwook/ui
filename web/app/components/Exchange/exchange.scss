@@ -578,10 +578,16 @@ tr.activeMarket {
 }
 
 .plot-stat {
+  color:grey;
   line-height:22px;
   span { margin-right:10px; }
   .ps-t,.ps-o,.ps-h,.ps-l,.ps-c,.ps-v {
     color:white;
     b {color:yellow;margin-right:2px;font-weight:bold;}
   }
+}
+
+.orderbook-latest-price td {
+  background-color:#eee !important;
+  color:#333;
 }
