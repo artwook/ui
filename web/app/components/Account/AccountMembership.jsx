@@ -66,7 +66,7 @@ class AccountRefererStats extends React.Component {
     }
 }
 
-@BindToChainState({keep_updating:false})
+@BindToChainState({keep_updating:true})
 class AccountMembership extends React.Component {
 
     static propTypes = {
@@ -87,7 +87,7 @@ class AccountMembership extends React.Component {
     _onClaim(e) {
         e.preventDefault();
         let cvb = ChainStore.getObject( this.props.account.get("cashback_vb") );
-        
+
         WalletActions.claimVestingBalance(this.props.account.get("id"), cvb);
     }
 
@@ -103,7 +103,7 @@ class AccountMembership extends React.Component {
         if( ref ) account.referrer_name = ref.get('name');
         let reg = ChainStore.getAccount( account.registrar );
         if( reg ) account.registrar_name = reg.get('name');
-       
+
         let account_name = account.name;
 
         let network_fee  = account.network_fee_percentage/100;
@@ -205,7 +205,7 @@ class AccountMembership extends React.Component {
                                 <Statistics stat_object={account.statistics}/>
                             </table>
                             <br/>
-                            <VestingBalance vb={account.cashback_vb} account={account}/>                            
+                            <VestingBalance vb={account.cashback_vb} account={account}/>
                         </div>
                     </div>
                     <div className="grid-block large-1">&nbsp;</div>

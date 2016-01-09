@@ -12,6 +12,8 @@ import TimeAgo from "../Utility/TimeAgo";
 import HelpContent from "../Utility/HelpContent";
 import Icon from "../Icon/Icon";
 import assetUtils from "common/asset_utils";
+import utils from "common/utils";
+
 
 class AssetFlag extends React.Component {
     render()
@@ -99,7 +101,6 @@ class Asset extends React.Component {
             </div>
         );
     }
-
 
     formattedPrice(price, hide_symbols=false, hide_value=false) {
         var base = price.base;
@@ -457,17 +458,118 @@ class Asset extends React.Component {
         );
     }
 
+    renderShareholders(asset) {
+        let shareholders = asset.shareholders || [];
+
+        return (
+            <div className="asset-card">
+              <div className="card-divider">Shareholders</div>
+                <table className="table key-value-table table-hover">
+                    <tbody>
+                        {
+                            shareholders.map((holder) => {
+                                var shareholder = ChainStore.getObject(holder.owner);
+                                var shareholder_name = shareholder ? shareholder.get('name') : '';
+                                var percent = utils.format_number((holder.balance / asset.dynamic.current_supply) * 100, 4);
+
+                                return <tr key={holder.owner}>
+                                    <td><LinkToAccountById account={holder.owner}/></td>
+                                    <td><FormattedAsset amount={holder.balance} asset={asset.id} /></td>
+                                    <td>{percent}%</td>
+                                    </tr>
+                            })
+                        }
+                    </tbody>
+                </table>
+            </div>
+        )
+    }
 
     render()
     {
         var asset = this.props.asset.toJS();
         var priceFeed = ('bitasset' in asset) ? this.renderPriceFeed(asset) : null;
         var priceFeedData = ('bitasset' in asset) ? this.renderPriceFeedData(asset) : null;
+        var pAvailable = parseInt((asset.options.max_supply-asset.dynamic.current_supply) / asset.options.max_supply * 100);
+        var pAllocated = parseInt(asset.dynamic.current_supply / asset.options.max_supply * 100);
 
         //console.log("This: ", this);
         // console.log("Asset: ", asset); //TODO Remove
 
         return (
+            asset.symbol.indexOf("PEQ") !== -1 ? (
+
+
+                <div className="grid-block page-layout">
+                    <div className="grid-block vertical" style={{overflow:"visible"}}>
+                        <div className="grid-block small-12 " style={{ overflow:"visible"}}>
+                            <div className=" small-6 " style={{ overflow:"visible"}}>
+                                {this.renderAboutBox(asset)}
+                            </div>
+
+                            <div className=" small-offset-1 small-5 " style={{ overflow:"visible"}}>
+
+                                <div style={{zoom: "0.8", marginTop:"1em"}}>
+                                    <div>
+                                        <span>Stock Option Pool</span>
+                                        <small className="pull-right"><FormattedAsset amount={asset.options.max_supply} asset={asset.id}/></small>
+                                    </div>
+                                    <div className="progress progress-small">
+                                        <div style={{width:"100%"}} className="progress-bar"></div>
+                                    </div>
+
+                                    <div>
+                                        <span>Available</span>
+                                        <small className="pull-right"><FormattedAsset amount={asset.options.max_supply-asset.dynamic.current_supply} asset={asset.id}/></small>
+                                    </div>
+                                    <div className="progress progress-small">
+                                        <div style={{width:pAvailable}} className="progress-bar"></div>
+                                    </div>
+
+                                    <div>
+                                        <span>Allocated</span>
+                                        <small className="pull-right"><FormattedAsset amount={asset.dynamic.current_supply} asset={asset.id}/></small>
+                                    </div>
+                                    <div className="progress progress-small">
+                                        <div style={{width:pAllocated}} className="progress-bar"></div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
+                        <div className="grid-content small-12 shrink" style={{ overflow:"visible"}}>
+                            {this.renderShareholders(asset)}
+                        </div>
+
+                        <div className="grid-block small-12 shrink vertical medium-horizontal" style={{ overflow:"visible"}}>
+                            <div className="small-12 medium-6" style={{overflow:"visible"}}>
+                                {this.renderSummary(asset)}
+                            </div>
+                            <div className="small-12 medium-6" style={{overflow:"visible"}}>
+                                {priceFeed ? priceFeed : this.renderPermissions(asset)}
+                            </div>
+                        </div>
+                        <div className="grid-block small-12 shrink vertical medium-horizontal" style={{ overflow:"visible"}}>
+                            <div className="small-12 medium-6" style={{overflow:"visible"}}>
+                                {this.renderFeePool(asset)}
+                            </div>
+                            <div className="small-12 medium-6" style={{overflow:"visible"}}>
+                                {priceFeed ? this.renderPermissions(asset) : null}
+                            </div>
+                        </div>
+
+                        {priceFeedData}
+
+                    </div>
+                </div>
+
+            ) : (
             <div className="grid-block page-layout">
                 <div className="grid-block vertical" style={{overflow:"visible"}}>
                     <div className="grid-block small-12 shrink" style={{ overflow:"visible"}}>
@@ -494,6 +596,7 @@ class Asset extends React.Component {
 
                 </div>
             </div>
+            )
         );
     }
 }
