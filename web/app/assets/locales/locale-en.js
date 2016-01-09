@@ -499,7 +499,7 @@
         assets: {
             title: "Assets",
             market: "SmartCoins",
-            user: "User Issued Assets",
+            user: "Company Equity",
             symbol: "Symbol",
             id: "ID",
             issuer: "Issuer",
@@ -680,7 +680,7 @@
         market_search: "Market Search",
         filter: "Filter",
         core_rate: "Core rate",
-        supply: "Supply",
+        supply: "Allocated",
         search: "Search",
         preferred: "My Favorite Markets"
     },
