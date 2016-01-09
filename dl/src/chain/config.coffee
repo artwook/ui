@@ -8,7 +8,7 @@ module.exports = _this =
         BitShares:
             core_asset: "CORE"
             address_prefix: "GPH"
-            chain_id: "bd535a6633d8ec2f6abf1196ee40d4a8efb9f254e05f87cbd9a34bcc4875b9c7"
+            chain_id: "aed0296e93ef339e80b5f470427669cc86fc25d62e7481c5e11c42e372fabb23"
         Muse:
             core_asset: "MUSE"
             address_prefix: "MUSE"
