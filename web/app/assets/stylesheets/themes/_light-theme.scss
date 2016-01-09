@@ -533,3 +533,25 @@ td.orderHistoryBid {
     background: $panel-bg-color;
   }
 }
+
+
+
+// exhange styling
+.stats .stat .value {
+  color: #333 !important;
+}
+
+.bucket-option {
+  color: #666;
+  &:hover {
+    color: white;
+  }
+}
+
+.active-bucket {
+  color: white;
+}
+
+.plot-stat {
+  color: #333 !important;
+}
