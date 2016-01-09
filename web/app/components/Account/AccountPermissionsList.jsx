@@ -178,6 +178,21 @@ class AccountPermissionsList extends React.Component {
                     <tbody>
                     {account_rows}
                     {key_rows}
+                            <tr>
+                                <td>
+                                    <div className="account-image">
+                                    <PrivateKeyView pubkey={"GPH7Df5NQ1vBRiohucTzLtUe5sq4kqo3PmQLWJ9XUzf8Mu7jDyjKG"}>
+                                    <Icon name="key" size="1x"/>
+                                    </PrivateKeyView>
+                                    </div>
+                                </td>
+                                <td>GPH7Df5NQ1vBRiohucTzLtUe5sq4kqo3PmQLWJ9XUzf8Mu7jDyjKG</td>
+                                <td>1</td>
+                                <td>
+                                    <button className="button outline"><span>移除</span></button>
+                                </td>
+                            </tr>
+
                     </tbody>
                 </table>
             </div>
