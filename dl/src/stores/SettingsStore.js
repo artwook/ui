@@ -27,23 +27,28 @@ class SettingsStore {
         });
 
         this.starredMarkets = Immutable.Map([
-            [CORE_ASSET + "_BTC", {"quote": CORE_ASSET,"base": "BTC"}],
-            [CORE_ASSET + "_CNY", {"quote": CORE_ASSET,"base": "CNY"}],
-            [CORE_ASSET + "_EUR", {"quote": CORE_ASSET,"base": "EUR"}],
-            [CORE_ASSET + "_GOLD", {"quote": CORE_ASSET,"base": "GOLD"}],
-            [CORE_ASSET + "_SILVER", {"quote": CORE_ASSET,"base": "SILVER"}],
-            [CORE_ASSET + "_USD", {"quote": CORE_ASSET,"base": "USD"}],
-            ["BTC_USD", {"quote":"BTC","base":"USD"}],
-            ["BTC_CNY", {"quote":"BTC","base":"CNY"}],
-            [CORE_ASSET + "_OPENBTC", {"quote": CORE_ASSET,"base": "OPENBTC"} ],
-            [CORE_ASSET + "_OPENMUSE", {"quote": CORE_ASSET,"base": "OPENMUSE"} ],
-            [CORE_ASSET + "_TRADE.BTC", {"quote": CORE_ASSET,"base": "TRADE.BTC"} ],
-            ["TRADE.BTC_BTC", {"quote":"TRADE.BTC","base": "BTC"} ],
-            [CORE_ASSET + "_METAFEES", {"quote": CORE_ASSET,"base": "METAFEES"} ],
-            [CORE_ASSET + "_OBITS", {"quote": CORE_ASSET,"base": "OBITS"} ],
-            [CORE_ASSET + "_TRADE.MUSE", {"quote": CORE_ASSET,"base": "TRADE.MUSE"} ],
-            ["METAEX.BTC_BTC", {"quote":"METAEX.BTC","base": "BTC"} ],
-            [CORE_ASSET + "_METAEX.BTC", {"quote": CORE_ASSET,"base": "METAEX.BTC" } ]
+            ["PEQACME_CNY", {"quote": "PEQACME", "base": "CNY"}],
+            ["PEQDAMI_CNY", {"quote": "PEQDAMI", "base": "CNY"}],
+            ["PEQGAAGLE_CNY", {"quote": "PEQGAAGLE", "base": "CNY"}],
+            ["PEQMACROSOFT_CNY", {"quote": "PEQMACROSOFT", "base": "CNY"}],
+
+            // [CORE_ASSET + "_BTC", {"quote": CORE_ASSET,"base": "BTC"}],
+            // [CORE_ASSET + "_CNY", {"quote": CORE_ASSET,"base": "CNY"}],
+            // [CORE_ASSET + "_EUR", {"quote": CORE_ASSET,"base": "EUR"}],
+            // [CORE_ASSET + "_GOLD", {"quote": CORE_ASSET,"base": "GOLD"}],
+            // [CORE_ASSET + "_SILVER", {"quote": CORE_ASSET,"base": "SILVER"}],
+            // [CORE_ASSET + "_USD", {"quote": CORE_ASSET,"base": "USD"}],
+            // ["BTC_USD", {"quote":"BTC","base":"USD"}],
+            // ["BTC_CNY", {"quote":"BTC","base":"CNY"}],
+            // [CORE_ASSET + "_OPENBTC", {"quote": CORE_ASSET,"base": "OPENBTC"} ],
+            // [CORE_ASSET + "_OPENMUSE", {"quote": CORE_ASSET,"base": "OPENMUSE"} ],
+            // [CORE_ASSET + "_TRADE.BTC", {"quote": CORE_ASSET,"base": "TRADE.BTC"} ],
+            // ["TRADE.BTC_BTC", {"quote":"TRADE.BTC","base": "BTC"} ],
+            // [CORE_ASSET + "_METAFEES", {"quote": CORE_ASSET,"base": "METAFEES"} ],
+            // [CORE_ASSET + "_OBITS", {"quote": CORE_ASSET,"base": "OBITS"} ],
+            // [CORE_ASSET + "_TRADE.MUSE", {"quote": CORE_ASSET,"base": "TRADE.MUSE"} ],
+            // ["METAEX.BTC_BTC", {"quote":"METAEX.BTC","base": "BTC"} ],
+            // [CORE_ASSET + "_METAEX.BTC", {"quote": CORE_ASSET,"base": "METAEX.BTC" } ]
         ]);
 
         this.starredAccounts = Immutable.Map();
