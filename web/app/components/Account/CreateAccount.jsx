@@ -227,8 +227,7 @@ class CreateAccount extends React.Component {
 
                              <div>
                                  <label><Translate content="account.fullname" /></label>
-                                 <input name="value" type="text" ref="input" autoComplete="off"
-                                        value="" placeholder="Please input your real name"/>
+                                 <input name="fullname" type="text" placeholder="Please input your real name"/>
                              </div>
 
                                 <AccountNameInput ref="account_name" cheapNameOnly={first_account}
