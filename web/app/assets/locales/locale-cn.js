@@ -34,6 +34,8 @@ module.exports = {
         hour_24: "日涨跌幅%",
         recent: "近期活动",
         name: "账户名",
+        fullname: "姓名",
+        fname_ph: "请输入您的姓名",
         member: {
             stats: "资料",
             join: "加入于",

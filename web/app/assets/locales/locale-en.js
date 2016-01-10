@@ -41,6 +41,8 @@
         hour_24: "24hr Change",
         recent: "Recent activity",
         name: "Account name",
+        fullname: "Full Name",
+        fname_ph: "Please input your real name",
         id: "Account ID",
         more: "see more",
         deposit_withdraw: "Deposit/Withdraw",
