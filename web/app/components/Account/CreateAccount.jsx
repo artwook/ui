@@ -224,6 +224,13 @@ class CreateAccount extends React.Component {
                     <div className="content-block center-content">
                         <div style={{width: '21em'}}>
                             <form onSubmit={this.onSubmit.bind(this)} noValidate>
+
+                             <div>
+                                 <label><Translate content="account.fullname" /></label>
+                                 <input name="value" type="text" ref="input" autoComplete="off"
+                                        value="" placeholder="Please input your real name"/>
+                             </div>
+
                                 <AccountNameInput ref="account_name" cheapNameOnly={first_account}
                                                   onChange={this.onAccountNameChange.bind(this)}
                                                   accountShouldNotExist={true}/>
