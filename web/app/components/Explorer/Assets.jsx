@@ -195,6 +195,7 @@ class Assets extends React.Component {
                                 className="grid-block vertical no-overflow no-padding"
                                 contentClass="grid-block vertical"
                             >
+                              {/*
                                 <Tab title="explorer.assets.market">
                                     <div className="grid-block shrink">
                                         <input style={{maxWidth: "500px"}} placeholder={placeholder} type="text" value={this.state.filterMPA} onChange={this._onFilter.bind(this, "filterMPA")}></input>
@@ -215,6 +216,7 @@ class Assets extends React.Component {
                                         </table> 
                                     </div>  
                                 </Tab>
+                              */}
 
                                 <Tab title="explorer.assets.user">
                                     <div className="grid-block shrink">
@@ -237,7 +239,8 @@ class Assets extends React.Component {
                                         </table>
                                     </div>
                                 </Tab>
-
+                  
+                                {/*
                                 <Tab title="explorer.assets.prediction">
                                     <div className="grid-block shrink">
                                         <input style={{maxWidth: "500px"}} placeholder={counterpart.translate("markets.search").toUpperCase()} type="text" value={this.state.filterPM} onChange={this._onFilter.bind(this, "filterPM")}></input>
@@ -250,6 +253,7 @@ class Assets extends React.Component {
                                         </table>
                                     </div>
                                 </Tab>
+                              */}
                             </Tabs>       
                         </div>              
                     </div>

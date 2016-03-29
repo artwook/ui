@@ -9,7 +9,7 @@ module.exports = {
         tr: "Turkish"
     },
     header: {
-        title: "Graphene (石墨烯)钱包",
+        title: "RexLedger",
         dashboard: "概览",
         explorer: "浏览",
         exchange: "交易",
@@ -28,7 +28,7 @@ module.exports = {
         update_asset: "更新资产"
     },
     account: {
-        welcome: "欢迎使用 Graphene (石墨烯)系统",
+        welcome: "欢迎使用 RexLedger",
         assets: "资产",
         market_value: "市值",
         hour_24: "日涨跌幅%",
@@ -667,6 +667,7 @@ module.exports = {
         no: "否",
         walletLockTimeout: "钱包自动锁定时间（秒）",
         themes: "主题",
+        defaultTheme: "默认",
         darkTheme: "黑色主题",
         lightTheme: "白色主题",
         olDarkTheme: "Openledger黑",
@@ -677,7 +678,7 @@ module.exports = {
         older: "更早"
     },
     footer: {
-        title: "Graphene (石墨烯)",
+        title: "RexLedger",
         block: "最新区块",
         loading: "载入中...",
         backup: "需要备份",

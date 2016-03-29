@@ -10,7 +10,7 @@
 
     },
     header: {
-        title: "Graphene UI",
+        title: "RexLedger",
         account: "Account",
         dashboard: "Dashboard",
         explorer: "Explore",
@@ -31,7 +31,7 @@
     propose: "propose",
     cancel: "cancel",
     account: {
-        welcome: "Welcome to Graphene",
+        welcome: "Welcome to RexLedger",
         asset: "Asset",
         market_value: "Market Value",
         hour_24: "24hr Change",
@@ -636,13 +636,14 @@
         no: "No",
         walletLockTimeout: "Wallet auto-lock time (seconds)",
         themes: "Theme",
+        defaultTheme: "Default Theme",
         "darkTheme": "Dark theme",
         "lightTheme": "Light theme",
         "olDarkTheme": "Openledger dark",
         reset: "Reset settings"
     },
     footer: {
-        title: "Graphene",
+        title: "RexLedger",
         block: "Head block",
         loading: "Loading...",
         backup: "Backup Required",

@@ -187,7 +187,7 @@ class Asset extends React.Component {
                         description={desc}
                         issuer= {issuerName}
                     />
-                    <a style={{textTransform: "uppercase"}} href={`#/market/${asset.symbol}_${preferredMarket}`}><Translate content="exchange.market"/></a>
+                    <a style={{textTransform: "uppercase"}} href={`/market/${asset.symbol}_${preferredMarket}`}><Translate content="exchange.market"/></a>
                 </div>
         );
     }
