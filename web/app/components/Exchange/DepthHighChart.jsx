@@ -2,12 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import {PropTypes} from "react";
 import Immutable from "immutable";
-import Highstock from "react-highcharts/bundle/highstock";
+import Highcharts from "highcharts/highstock";
+var ReactHighstock = require("react-highcharts/dist/ReactHighstock");
 import utils from "common/utils";
 import counterpart from "counterpart";
 import {cloneDeep} from "lodash";
 import Translate from "react-translate-component";
 import colors from "assets/colors";
+import AssetName from "../Utility/AssetName";
 
 class DepthHighChart extends React.Component {
 
@@ -198,13 +200,13 @@ class DepthHighChart extends React.Component {
             let middleValue = (flatAsks[0][0] + flatBids[flatBids.length - 1][0]) / 2;
             let adjustedSpread = spread * power;
             
-            config.xAxis.min = middleValue * (this.props.noFrame ? 0.8 : 0.50);
-            config.xAxis.max = middleValue * (this.props.noFrame ? 1.2 : 1.50);
+            config.xAxis.min = middleValue * 0.3 // middleValue * (this.props.noFrame ? 0.8 : 0.50);
+            config.xAxis.max = middleValue * 1.7; //(this.props.noFrame ? 1.2 : 1.50);
          
-            if (adjustedSpread > 0 && adjustedSpread > middleValue) {
-                config.xAxis.min = Math.max(0, middleValue - 1.5 * adjustedSpread);
-                config.xAxis.max = middleValue + 1.5 * adjustedSpread;
-            }
+            // if (adjustedSpread > 0 && adjustedSpread > middleValue) {
+            //     config.xAxis.min = Math.max(0, middleValue - 1.5 * adjustedSpread);
+            //     config.xAxis.max = middleValue + 1.5 * adjustedSpread;
+            // }
         }
 
         if (this.props.hasPrediction) {
@@ -332,10 +334,10 @@ class DepthHighChart extends React.Component {
 
         }
 
-
         // Push asks and bids
         if (flatBids.length) {
             config.series.push({
+                step: "right",
                 name: `Bid ${quoteSymbol}`,
                 data: flatBids,
                 color: colors[theme].bidColor,
@@ -345,6 +347,7 @@ class DepthHighChart extends React.Component {
 
         if (flatAsks.length) {
             config.series.push({
+                step: "left",
                 name: `Ask ${quoteSymbol}`,
                 data: flatAsks,
                 color: colors[theme].askColor,
@@ -374,7 +377,7 @@ class DepthHighChart extends React.Component {
                         {!flatBids.length && !flatAsks.length && !flatCalls.length ? <span className="no-data"><Translate content="exchange.no_data" /></span> : null}
                         {this.props.noText ? null : <p className="bid-total">{utils.format_number(totalBids, base.get("precision"))} {baseSymbol}</p>}
                         {this.props.noText ? null : <p className="ask-total">{utils.format_number(totalAsks, quote.get("precision"))} {quoteSymbol}</p>}
-                        {flatBids || flatAsks || flatCalls ? <Highstock config={config}/> : null}
+                        {flatBids || flatAsks || flatCalls ? <ReactHighstock config={config}/> : null}
                 </div>
             );
         } else {
@@ -382,11 +385,11 @@ class DepthHighChart extends React.Component {
                 <div className="grid-content no-overflow no-padding middle-content">
                     <div className="exchange-bordered" style={{margin: 10}}>
                         <div className="exchange-content-header">
-                            {this.props.noText ? null : <span className="bid-total">{utils.format_number(totalBids, base.get("precision"))} {baseSymbol}</span>}
-                            {this.props.noText ? null : <span className="ask-total float-right">{utils.format_number(totalAsks, quote.get("precision"))} {quoteSymbol}</span>}                        
+                            {this.props.noText ? null : <span className="bid-total">{utils.format_number(totalBids, base.get("precision"))} <AssetName name={baseSymbol} /></span>}
+                            {this.props.noText ? null : <span className="ask-total float-right">{utils.format_number(totalAsks, quote.get("precision"))} <AssetName name={quoteSymbol} /></span>}                        
                         </div>
                         {!flatBids.length && !flatAsks.length && !flatCalls.length ? <span className="no-data"><Translate content="exchange.no_data" /></span> : null}
-                        {flatBids || flatAsks || flatCalls ? <Highstock ref="depthChart" config={config}/> : null}
+                        {flatBids || flatAsks || flatCalls ? <ReactHighstock ref="depthChart" config={config}/> : null}
                     </div>
                 </div>
             );

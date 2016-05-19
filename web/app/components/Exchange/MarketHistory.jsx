@@ -14,6 +14,7 @@ import SettingsStore from "stores/SettingsStore";
 import connectToStores from "alt/utils/connectToStores";
 import {operations} from "chain/chain_types";
 import TransitionWrapper from "../Utility/TransitionWrapper";
+import AssetName from "../Utility/AssetName";
 
 @connectToStores
 class MarketHistory extends React.Component {
@@ -128,7 +129,7 @@ class MarketHistory extends React.Component {
                 index++;
                 return index % 2 === 0;
             })
-            .take(50)
+            .take(100)
             .map(order => {
                 keyIndex++;
                 let paysAsset, receivesAsset, isAsk = false;
@@ -164,10 +165,9 @@ class MarketHistory extends React.Component {
             <div className={this.props.className}>
                 <div className="exchange-bordered">
                     <div style={this.props.headerStyle} className="grid-block shrink left-orderbook-header bottom-header">
-                        {isNullAccount ? null : (
-                            <div className={myHistoryClass} onClick={this._changeTab.bind(this, "my_history")} >
+                            <div className={cnames(myHistoryClass, {disabled: isNullAccount})} onClick={this._changeTab.bind(this, "my_history")} >
                                 <Translate content="exchange.my_history" />
-                            </div>)}
+                            </div>
                         <div className={historyClass} onClick={this._changeTab.bind(this, "history")}>
                             <Translate content="exchange.history" />
                         </div>
@@ -177,8 +177,8 @@ class MarketHistory extends React.Component {
                             <thead>
                                 <tr>
                                     <th style={{width: "25%", textAlign: "center"}}><Translate className="header-sub-title" content="exchange.price" /></th>
-                                    <th style={{width: "25%", textAlign: "center"}}><span className="header-sub-title">{quoteSymbol}</span></th>
-                                    <th style={{width: "25%", textAlign: "center"}}><span className="header-sub-title">{baseSymbol}</span></th>
+                                    <th style={{width: "25%", textAlign: "center"}}><span className="header-sub-title"><AssetName name={quoteSymbol} /></span></th>
+                                    <th style={{width: "25%", textAlign: "center"}}><span className="header-sub-title"><AssetName name={baseSymbol} /></span></th>
                                     <th style={{width: "25%", textAlign: "center"}}><Translate className="header-sub-title" content={activeTab === "history" ? "explorer.block.date" : "explorer.block.title"} /></th>
                                 </tr>
                             </thead>

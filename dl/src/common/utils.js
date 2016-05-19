@@ -1,4 +1,5 @@
 var numeral = require("numeral");
+
 let id_regex = /\b\d+\.\d+\.(\d+)\b/;
 
 import {object_type, operations} from "chain/chain_types";
@@ -58,6 +59,9 @@ var Utils = {
     },
 
     get_asset_price: function(quoteAmount, quoteAsset, baseAmount, baseAsset, inverted = false) {
+        if (!quoteAsset || !baseAsset) {
+            return 1;
+        }
         var price = this.get_asset_amount(quoteAmount, quoteAsset) / this.get_asset_amount(baseAmount, baseAsset);
         return inverted ? 1 / price : price;
     },
@@ -69,12 +73,13 @@ var Utils = {
     },
 
     format_volume(amount) {
-        if (amount < 10) {
-            return this.format_number(amount, 2);
-        } else if (amount < 10000) {
-            return this.format_number(amount, 0);
+
+        if (amount < 10000) {
+            return this.format_number(amount, 3);
+        } else if (amount < 1000000) {
+            return (Math.round(amount / 10) / 100).toFixed(2) + "k";
         } else {
-            return Math.round(amount / 1000) + "k";
+            return (Math.round(amount / 10000) / 100).toFixed(2) + "M";
         }
     },
 
@@ -385,6 +390,7 @@ var Utils = {
     },
 
     convertValue: function(priceObject, amount, fromAsset, toAsset) {
+        priceObject = priceObject.toJS ?  priceObject.toJS() : priceObject;
         let quotePrecision = this.get_asset_precision(fromAsset.get("precision"));
         let basePrecision = this.get_asset_precision(toAsset.get("precision"));
 
@@ -463,6 +469,27 @@ var Utils = {
         // }
 
         // return result;
+    },
+
+    get_percentage(a, b) {
+        return Math.round((a/b) * 100) + "%";
+    },
+
+    replaceName(name, isBitAsset = false) {
+        let toReplace = ["TRADE.", "OPEN.", "METAEX."];
+        let suffix = "";
+        let i;
+        for (i = 0; i < toReplace.length; i++) {
+            if (name.indexOf(toReplace[i]) !== -1) {
+                name = name.replace(toReplace[i], "") + suffix;
+                break;
+            }
+        }
+
+        return {
+            name,
+            prefix: isBitAsset ? "bit" : toReplace[i] ? toReplace[i].toLowerCase() : null
+        };
     }
 };
 

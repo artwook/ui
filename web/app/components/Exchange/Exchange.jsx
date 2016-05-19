@@ -34,6 +34,8 @@ import ConfirmOrderModal from "./ConfirmOrderModal";
 import IndicatorModal from "./IndicatorModal";
 import OpenSettleOrders from "./OpenSettleOrders";
 import counterpart from "counterpart";
+import AssetName from "../Utility/AssetName";
+import Highcharts from "highcharts/highstock";
 
 require("./exchange.scss");
 
@@ -90,7 +92,7 @@ class PriceStat extends React.Component {
                         {!ready ? 0 : value}
                         {!change ? null : change !== null ? <span className={changeClass}>&nbsp;{changeClass === "change-up" ? <span>&#8593;</span> : <span>&#8595;</span>}</span> : null}
                     </b>
-                    <span>{base.get("symbol")}{quote ? <span>/{quote.get("symbol")}</span> : null}</span>
+                    <span><AssetName name={base.get("symbol")} />{quote ? <span>/<AssetName name={quote.get("symbol")} /></span> : null}</span>
                 </span>
             </li>
         );
@@ -770,7 +772,7 @@ class Exchange extends React.Component {
                     quote: order.sell_price.base,
                     base: order.sell_price.quote
                 },
-                buyAmount: null,
+                buyAmount: 1,
                 buyTotal: null
             });
 
@@ -791,7 +793,7 @@ class Exchange extends React.Component {
                     quote: order.sell_price.base,
                     base: order.sell_price.quote
                 },
-                sellAmount: null,
+                sellAmount: 1,
                 sellTotal: null
             });
         }
@@ -924,12 +926,14 @@ class Exchange extends React.Component {
             settlementBase, settlementQuote, settlementPrice, highestBid,
             squeezePrice, lowestAsk, showCallLimit;
 
-        if (quote && base) {
-            if (quote.get("bitasset") && quote.getIn(["bitasset", "current_feed"]) && base.get("id") === "1.3.0") {
+        let {isMarketAsset} = market_utils.isMarketAsset(quote, base);
+
+        if (isMarketAsset && quote && base) {
+            if (quote.get("bitasset") && quote.getIn(["bitasset", "current_feed"]) && base.get("id") === quote.getIn(["bitasset", "options", "short_backing_asset"])) {
                 settlement_price = quote.getIn(["bitasset", "current_feed", "settlement_price"]);
                 short_squeeze = quote.getIn(["bitasset", "current_feed", "maximum_short_squeeze_ratio"]) / 1000;
 
-            } else if (base.get("bitasset") && base.getIn(["bitasset", "current_feed"]) && quote.get("id") === "1.3.0") {
+            } else if (base.get("bitasset") && base.getIn(["bitasset", "current_feed"]) && quote.get("id") === base.getIn(["bitasset", "options", "short_backing_asset"])) {
                 settlement_price = base.getIn(["bitasset", "current_feed", "settlement_price"]);
                 short_squeeze = base.getIn(["bitasset", "current_feed", "maximum_short_squeeze_ratio"]) / 1000;
             }
@@ -945,7 +949,7 @@ class Exchange extends React.Component {
                     settlementQuote = {precision: quote.get("precision"), id: quote.get("id")};
                 }
 
-                settlementPrice = utils.get_asset_price(settlement_price.getIn(["quote", "amount"]), settlementQuote, settlement_price.getIn(["base", "amount"]), settlementBase, flipped);
+                settlementPrice = market_utils.getFeedPrice(settlement_price, flipped);
 
                 if (flipped) {
                     highestBid = bids.reduce((total, bid) => {
@@ -1196,10 +1200,11 @@ class Exchange extends React.Component {
 
         let buyForm = (
             <BuySell
+                smallScreen={smallScreen}
                 style={!smallScreen && !leftOrderBook ? {minHeight: 266} : null}
                 isOpen={this.state.buySellOpen}
                 onToggleOpen={this._toggleOpenBuySell.bind(this)}
-                className={cnames("small-12 no-padding middle-content", leftOrderBook || smallScreen ? "medium-6" : "medium-6 large-4", this.state.flipBuySell ? "order-2 sell-form" : "order-1 buy-form")}
+                className={cnames("small-12 no-padding middle-content", {disabled: isNullAccount}, leftOrderBook || smallScreen ? "medium-6" : "medium-6 large-4", this.state.flipBuySell ? "order-2 sell-form" : "order-1 buy-form")}
                 type="bid"
                 amount={buyAmount}
                 price={displayBuyPrice}
@@ -1229,10 +1234,11 @@ class Exchange extends React.Component {
 
         let sellForm = (
             <BuySell
+                smallScreen={smallScreen}
                 style={!smallScreen && !leftOrderBook ? {minHeight: 266} : null}
                 isOpen={this.state.buySellOpen}
                 onToggleOpen={this._toggleOpenBuySell.bind(this)}
-                className={cnames("small-12 no-padding middle-content", leftOrderBook || smallScreen ? "medium-6" : "medium-6 large-4", this.state.flipBuySell ? "order-1 buy-form" : "order-2 sell-form")}
+                className={cnames("small-12 no-padding middle-content", {disabled: isNullAccount}, leftOrderBook || smallScreen ? "medium-6" : "medium-6 large-4", this.state.flipBuySell ? "order-1 buy-form" : "order-2 sell-form")}
                 type="ask"
                 amount={sellAmount}
                 price={displaySellPrice}
@@ -1305,7 +1311,7 @@ class Exchange extends React.Component {
                                     </span>
                                     {!hasPrediction ? (
                                         <Link className="market-symbol" to={`/market/${baseSymbol}_${quoteSymbol}`}>
-                                            <span>{`${quoteSymbol} : ${baseSymbol}`}</span>
+                                            <span><AssetName name={quoteSymbol} replace={true} /> : <AssetName name={baseSymbol} replace={true} /></span>
                                         </Link>) : (
                                         <a className="market-symbol">
                                             <span>{`${quoteSymbol} : ${baseSymbol}`}</span>
@@ -1330,7 +1336,7 @@ class Exchange extends React.Component {
                                                     <span>
                                                         <Translate component="span" content="exchange.squeeze" />
                                                         <b className="value" style={{color: "#BBBF2B"}}>{utils.price_text(squeezePrice, quote, base)}</b>
-                                                        <span>{baseSymbol}/{quoteSymbol}</span>
+                                                        <span><AssetName name={baseSymbol} />/<AssetName name={quoteSymbol} /></span>
                                                     </span>
                                                 </li>) : null}
                                             {latestPrice ?
@@ -1338,7 +1344,7 @@ class Exchange extends React.Component {
                                                     <span>
                                                         <Translate component="span" content="exchange.latest" />
                                                         <b className={"value"}>{utils.price_text(!marketReady ? 0 : latestPrice.full, quote, base)}<span className={changeClass}>&nbsp;{changeClass === "change-up" ? <span>&#8593;</span> : <span>&#8595;</span>}</span></b>
-                                                        <span>{baseSymbol}/{quoteSymbol}</span>
+                                                        <span><AssetName name={baseSymbol} />/<AssetName name={quoteSymbol} /></span>
                                                     </span>
                                                 </li> : null}
 
@@ -1470,7 +1476,7 @@ class Exchange extends React.Component {
 
                         {/* OrderBook and Market History */}
 
-                        {isNullAccount ? null : (
+                        
                             <div className="grid-block vertical shrink buy-sell">
                             {hasPrediction ? <div className="grid-content no-overflow" style={{lineHeight: "1.2rem", paddingTop: 10}}>{description}</div> : null}
                             
@@ -1507,7 +1513,7 @@ class Exchange extends React.Component {
                                     diff={sellDiff}
                                 />
                             </div>
-                        </div>)}
+                        </div>
 
                         <div className="grid-block no-overflow wrap shrink no-padding">
                             {!leftOrderBook && quote && base ? buyForm : null}
@@ -1533,10 +1539,10 @@ class Exchange extends React.Component {
                                 isNullAccount={isNullAccount}
                             />
 
-                            {!isNullAccount && limit_orders.size > 0 && base && quote ? (
+                            {limit_orders.size > 0 && base && quote ? (
                             <MyOpenOrders
                                 smallScreen={this.props.smallScreen}
-                                className={cnames(!smallScreen && !leftOrderBook ? "medium-6 large-4" : "medium-12 large-6", "small-12 no-padding align-spaced ps-container middle-content order-4")}
+                                className={cnames({disabled: isNullAccount}, !smallScreen && !leftOrderBook ? "medium-6 large-4" : "medium-12 large-6", "small-12 no-padding align-spaced ps-container middle-content order-4")}
                                 key="open_orders"
                                 orders={limit_orders}
                                 currentAccount={currentAccount.get("id")}
