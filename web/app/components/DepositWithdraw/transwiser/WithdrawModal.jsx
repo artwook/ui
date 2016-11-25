@@ -1,14 +1,15 @@
 import React from "react";
 import Trigger from "react-foundation-apps/src/trigger";
 import Translate from "react-translate-component";
+import {ChainStore} from "graphenejs-lib";
 import ChainTypes from "components/Utility/ChainTypes";
-import ChainStore from "api/ChainStore";
 import BindToChainState from "components/Utility/BindToChainState";
 import BalanceComponent from "components/Utility/BalanceComponent";
 import counterpart from "counterpart";
 import AmountSelector from "components/Utility/AmountSelector";
 import AccountActions from "actions/AccountActions";
 import Utils from "common/utils.js";
+
 
 @BindToChainState({keep_updating:true})
 export default class WithdrawModal extends React.Component {

@@ -2,7 +2,6 @@ import React from "react";
 import counterpart from "counterpart";
 import Translate from "react-translate-component";
 import ChainTypes from "components/Utility/ChainTypes";
-import ChainStore from "api/ChainStore";
 import BindToChainState from "components/Utility/BindToChainState";
 import Modal from "react-foundation-apps/src/modal";
 import Trigger from "react-foundation-apps/src/trigger";
