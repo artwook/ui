@@ -122,7 +122,7 @@ export default class BlockTradesGateway extends React.Component {
                 </div>
 
                 {!coin ? <LoadingIndicator /> :
-                <div>    
+                <div>
                     <div>
                         <span><Translate content={"gateway.choose_" + action} />: </span>
                         <select
@@ -158,7 +158,7 @@ export default class BlockTradesGateway extends React.Component {
                         <div style={{padding: 15}}><Translate content="gateway.support_block" /> <a href={"mailto:" + issuer.support}>{issuer.support}</a></div>
                     </div>
 
-                    {coin && coin.symbol ? 
+                    {coin && coin.symbol ?
                     <TransactionWrapper
                         asset={coin.symbol}
                         fromAccount={
@@ -186,7 +186,7 @@ export default class BlockTradesGateway extends React.Component {
                                             from: fromAccount.get("id") ,
                                             asset_id: asset.get("id")
                                         }
-                                  
+
                                     }}
                             />
                             }

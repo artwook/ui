@@ -9,7 +9,7 @@ import ChainStore from "api/ChainStore";
 import ChainTypes from "../Utility/ChainTypes";
 import BindToChainState from "../Utility/BindToChainState";
 import WalletDb from "stores/WalletDb";
-import TranswiserDepositWithdraw from "../DepositWithdraw/transwiser/TranswiserDepositWithdraw";
+import TranswiserService from "../DepositWithdraw/transwiser/TranswiserService";
 import BlockTradesBridgeDepositRequest from "../DepositWithdraw/blocktrades/BlockTradesBridgeDepositRequest";
 import BlockTradesGatewayDepositRequest from "../DepositWithdraw/blocktrades/BlockTradesGatewayDepositRequest";
 import BlockTradesGateway from "../DepositWithdraw/BlockTradesGateway";
@@ -45,7 +45,7 @@ class AccountDepositWithdraw extends React.Component {
             blockTradesBackedCoins: [],
             olService: props.viewSettings.get("olService", "gateway"),
             btService: props.viewSettings.get("btService", "bridge"),
-            metaService: props.viewSettings.get("metaService", "bridge")
+            metaService: props.viewSettings.get("metaService", "bridge"),
         }
     }
 
@@ -57,6 +57,8 @@ class AccountDepositWithdraw extends React.Component {
             nextState.olService !== this.state.olService ||
             nextState.btService !== this.state.btService ||
             nextState.metaService !== this.state.metaService
+            // nextState.transService != this.state.transService ||
+            // !utils.are_equal_shallow(nextState.transSetting, this.state.transSetting)
         );
     }
 
@@ -72,6 +74,8 @@ class AccountDepositWithdraw extends React.Component {
         })).catch(err => {
             console.log("error fetching blocktrades list of coins", err);
         });
+
+        // this.getTransSetting()
     }
 
     getBlocktradesBackedCoins(allBlocktradesCoins) {
@@ -156,7 +160,7 @@ class AccountDepositWithdraw extends React.Component {
                                 <div onClick={this.toggleBTService.bind(this, "gateway")} className={cnames("button", btService === "gateway" ? "active" : "outline")}><Translate content="gateway.gateway" /></div>
                             </div>
 
-                            {btService === "bridge" ? 
+                            {btService === "bridge" ?
                             <BlockTradesBridgeDepositRequest
                                 gateway="blocktrades"
                                 url="https://api.blocktrades.us/v2"
@@ -170,7 +174,7 @@ class AccountDepositWithdraw extends React.Component {
                                 initial_withdraw_estimated_input_amount="100000"
                             /> : null}
 
-                            {btService === "gateway" && blockTradesGatewayCoins.length ? 
+                            {btService === "gateway" && blockTradesGatewayCoins.length ?
                             <BlockTradesGateway
                                 account={account}
                                 coins={blockTradesGatewayCoins}
@@ -178,7 +182,7 @@ class AccountDepositWithdraw extends React.Component {
                             /> : null}
                         </div>
                         <div className="content-block">
-                            
+
 
                         </div>
                     </Tabs.Tab>
@@ -190,18 +194,18 @@ class AccountDepositWithdraw extends React.Component {
                             </div>
                             <div className="button-group" style={{marginBottom: 0}}>
                                 <div onClick={this.toggleOLService.bind(this, "gateway")} className={cnames("button", olService === "gateway" ? "active" : "outline")}><Translate content="gateway.gateway" /></div>
-                                <div onClick={this.toggleOLService.bind(this, "fiat")} className={cnames("button", olService === "fiat" ? "active" : "outline")}>Fiat</div>
+                                <div onClick={this.toggleOLService.bind(this, "fiat")} className={cnames("button", olService === "fiat" ? "active" : "outline")}><Translate content="gateway.fiat" /></div>
                             </div>
-                            
-                            
-                            {olService === "gateway" && blockTradesGatewayCoins.length ? 
+
+
+                            {olService === "gateway" && blockTradesGatewayCoins.length ?
                             <BlockTradesGateway
                                 account={account}
                                 coins={olGatewayCoins}
                                 provider="openledger"
                             /> : null}
 
-                            {olService === "fiat" ? 
+                            {olService === "fiat" ?
                             <div>
                                 <div style={{paddingBottom: 15}}><Translate component="h5" content="gateway.fiat_text" /></div>
 
@@ -215,7 +219,7 @@ class AccountDepositWithdraw extends React.Component {
                             </div> : null}
                         </div>
 
-                        
+
                     </Tabs.Tab>
 
                     <Tabs.Tab title="metaexchange">
@@ -232,7 +236,19 @@ class AccountDepositWithdraw extends React.Component {
                     </Tabs.Tab>
 
                     <Tabs.Tab title="transwiser">
+                      <TranswiserService account={account} />
+                    </Tabs.Tab>
+
+                            {/*
+                    <Tabs.Tab title="transwiser">
                         <div className="float-right"><a href="http://www.transwiser.com" target="_blank"><Translate content="gateway.website" /></a></div>
+                        <div className="button-group">
+                            <div onClick={this.toggleTransService.bind(this, "gateway")} className={cnames("button", transService === "gateway" ? "active" : "outline")}><Translate content="gateway.gateway" /></div>
+                            <div onClick={this.toggleTransService.bind(this, "bridge")} className={cnames("button", transService === "bridge" ? "active" : "outline")}><Translate content="gateway.bridge" /></div>
+                            <div onClick={this.toggleTransService.bind(this, "fiat")} className={cnames("button", transService === "fiat" ? "active" : "outline")}><Translate content="gateway.fiat" /></div>
+                        </div>
+
+
                         <table className="table">
                             <thead>
                             <tr>
@@ -251,15 +267,10 @@ class AccountDepositWithdraw extends React.Component {
                                 issuerAccount="transwiser-wallet"
                                 account={account.get('name')}
                                 receiveAsset="CNY" />
-                            {/*
-                            <TranswiserDepositWithdraw
-                                issuerAccount="transwiser-wallet"
-                                account={this.props.account.get('name')}
-                                receiveAsset="BOTSCNY" />
-                            */}
                             </tbody>
                         </table>
                     </Tabs.Tab>
+                            */}
 
                 </Tabs>
             </div>
