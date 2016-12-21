@@ -1,8 +1,8 @@
 {
-  "name": "DACPLAY2-light-wallet",
-  "productName": "DACPLAY2-light-wallet",
-  "identifier": "org.dacplay.wallet",
-  "description": "DACPLAY",
+  "name": "ARTWOOK-light-wallet",
+  "productName": "ARTWOOK-light-wallet",
+  "identifier": "com.artwook.wallet",
+  "description": "ARTWOOK",
   "main": "electron.js",
   "config": {
     "target": "development"
