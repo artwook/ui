@@ -5,7 +5,7 @@ var Immutable = require("immutable");
 import {merge} from "lodash";
 import ls from "common/localStorage";
 
-const CORE_ASSET = "BTS"; // Setting this to BTS to prevent loading issues when used with BTS chain which is the most usual case currently
+const CORE_ASSET = "AWK"; // Setting this to BTS to prevent loading issues when used with BTS chain which is the most usual case currently
 
 const STORAGE_KEY = "__graphene__";
 let ss = new ls(STORAGE_KEY);
@@ -15,9 +15,9 @@ class SettingsStore {
         this.exportPublicMethods({getSetting: this.getSetting.bind(this)});
 
         this.defaultSettings = Immutable.Map({
-            locale: "en",
-            apiServer: "wss://bitshares.openledger.info/ws",
-            faucet_address: "https://bitshares.openledger.info",
+            locale: "cn",
+            apiServer: "wss://ws.artwook.com",
+            faucet_address: "https://api.artwook.com",
             unit: CORE_ASSET,
             showSettles: false,
             showAssetPercent: false,
@@ -54,19 +54,13 @@ class SettingsStore {
         // If you want a default value to be translated, add the translation to settings in locale-xx.js
         // and use an object {translate: key} in the defaults array
         let apiServer = [
-            {url: "wss://bitshares.openledger.info/ws", location: "Nuremberg, Germany"},
-            {url: "wss://bit.btsabc.org/ws", location: "Hong Kong"},
-            {url: "wss://bts.transwiser.com/ws", location: "Hangzhou, China"},
-            {url: "wss://bitshares.dacplay.org:8089/ws", location:  "Hangzhou, China"},
-            {url: "wss://openledger.hk/ws", location: "Hong Kong"},
-            {url: "wss://secure.freedomledger.com/ws", location: "Toronto, Canada"},
-            {url: "wss://testnet.bitshares.eu/ws", location: "Public Testnet Server (Frankfurt, Germany)"}
+            {url: "wss://ws.artwook.com", location: "Shanghai, China"}
         ];
 
         let defaults = {
             locale: [
-                "en",
                 "cn",
+                "en",
                 "fr",
                 "ko",
                 "de",
