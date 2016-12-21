@@ -18,6 +18,7 @@ import Translate from "react-translate-component";
 // import RefcodeInput from "../Forms/RefcodeInput";
 import {ChainStore, FetchChain} from "graphenejs-lib";
 import {BackupCreate} from "../Wallet/Backup";
+import counterpart from "counterpart";
 
 @connectToStores
 class CreateAccount extends React.Component {
@@ -189,7 +190,7 @@ class CreateAccount extends React.Component {
                     cheapNameOnly={firstAccount}
                     onChange={this.onAccountNameChange.bind(this)}
                     accountShouldNotExist={true}
-                    placeholder="Account Name (Public)"
+                    placeholder={counterpart.translate("account.name")}
                     noLabel
                 />
 
