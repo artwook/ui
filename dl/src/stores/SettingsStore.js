@@ -7,7 +7,7 @@ import ls from "common/localStorage";
 
 const CORE_ASSET = "AWK"; // Setting this to BTS to prevent loading issues when used with BTS chain which is the most usual case currently
 
-const STORAGE_KEY = "__graphene__";
+const STORAGE_KEY = "__artwook__";
 let ss = new ls(STORAGE_KEY);
 
 class SettingsStore {

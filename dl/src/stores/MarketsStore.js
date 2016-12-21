@@ -15,7 +15,7 @@ import {
 }
 from "./tcomb_structs";
 
-let marketStorage = new ls("__graphene__");
+let marketStorage = new ls("__artwook__");
 
 class MarketsStore {
     constructor() {

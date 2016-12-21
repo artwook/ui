@@ -87,8 +87,10 @@ class App extends React.Component {
             synced: false,
             syncFail: false,
             theme: SettingsStore.getState().settings.get("themes"),
-            disableChat: SettingsStore.getState().settings.get("disableChat", true),
-            showChat: SettingsStore.getState().viewSettings.get("showChat", false),
+            // disableChat: SettingsStore.getState().settings.get("disableChat", true),
+            // showChat: SettingsStore.getState().viewSettings.get("showChat", false),
+            disableChat: true,
+            showChat: false,
             dockedChat: SettingsStore.getState().viewSettings.get("dockedChat", false),
             isMobile: false
         };
@@ -194,6 +196,8 @@ class App extends React.Component {
 
     render() {
         let {disableChat, isMobile, showChat, dockedChat} = this.state;
+        disableChat = true;
+        showChat = false;
 
         let content = null;
 
@@ -217,7 +221,7 @@ class App extends React.Component {
                             {this.props.children}
                         </div>
                         <div className="grid-block shrink" style={{overflow: "hidden"}}>
-                            {isMobile ? null :
+                            {isMobile || disableChat || !showChat ? null :
                                 <Chat
                                     showChat={showChat}
                                     disable={disableChat}
