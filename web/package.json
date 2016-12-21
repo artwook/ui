@@ -1,9 +1,9 @@
 {
-  "name": "DACPLAY-UI",
+  "name": "ARTWOOK-UI",
   "version": "2.0.0",
-  "description": "Advanced wallet interface for DACPLAY",
-  "homepage": "https://github.com/bitsuperlab/cpp-play2-ui",
-  "author": "DACPLAY",
+  "description": "Advanced wallet interface for ARTWOOK",
+  "homepage": "https://github.com/artwook/ui",
+  "author": "ARTWOOK",
   "license": "LicenseRef-LICENSE",
   "engines": {
     "node": ">=5.0.0",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/bitsuperlab/cpp-play2-ui"
+    "url": "git://github.com/artwook/ui"
   },
   "scripts": {
     "test": "jest",
@@ -129,5 +129,6 @@
       "/node_modules/",
       "/utils/"
     ]
-  }
+  },
+  "private": true
 }
