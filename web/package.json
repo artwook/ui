@@ -34,7 +34,7 @@
     "event-emitter": "^0.3.4",
     "foundation-apps": "git+https://github.com/zurb/foundation-apps.git",
     "git-rev-sync": "^1.4.0",
-    "graphenejs-lib": "^0.4.10",
+    "graphenejs-lib": "git+ssh://git@github.com/artwook/graphenejs-lib#artwook",
     "highcharts": "4.2.6",
     "history": "1.13.1",
     "extract-text-webpack-plugin": "^0.8.0",
