@@ -21,7 +21,7 @@ class IntlActions {
         } else {
             return (dispatch) => {
                 // fetch("/locale-" + locale + ".json").then( (reply) => {
-              	fetch(CDN + "/locale-" + locale + ".json?v=" + APP_VERSION).then( (reply) => {
+              	fetch(CDN + "locale-" + locale + ".json?v=" + APP_VERSION).then( (reply) => {
 
                     return reply.json().then(result => {
                         dispatch({

@@ -117,11 +117,18 @@ module.exports = function(options) {
             ]
         },
         output: {
-            publicPath: "/",
+            publicPath: options.cdn || "/",
             path: outputPath,
             filename: "[name].js",
+            chunkFilename: "[chunkhash].js",
             pathinfo: !options.prod,
-            sourceMapFilename: "[name].js.map"
+            sourceMapFilename: "[chunkhash].js.map"
+            // publicPath: options.cdn || "/",
+            // path: outputPath,
+            // filename: "[hash].js",
+            // chunkFilename: "[chunkhash].js",
+            // pathinfo: !options.prod,
+            // sourceMapFilename: "[hash].js.map"
         },
         devtool: options.prod ? "cheap-module-source-map" : "eval",
         module: {
