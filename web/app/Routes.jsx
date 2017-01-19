@@ -18,7 +18,7 @@ import PrivateKeyActions from "actions/PrivateKeyActions";
 * Electron does not support async loading of components via System.import,
 * so we make sure they're bundled already by including them here
 */
-if (__ELECTRON__) {
+if (__ELECTRON__ || __HASH_HISTORY__) {
     require("./electron_imports");
 }
 
@@ -26,6 +26,7 @@ class Auth extends React.Component {
     render() {return null; }
 }
 
+let connect = true;
 const willTransitionTo = (nextState, replaceState, callback) => {
     let connectionString = SettingsStore.getSetting("apiServer");
 
@@ -46,7 +47,7 @@ const willTransitionTo = (nextState, replaceState, callback) => {
         });
 
     }
-    Apis.instance(connectionString, true).init_promise.then(() => {
+    Apis.instance(connectionString, !!connect).init_promise.then(() => {
         var db;
         try {
             db = iDB.init_instance(window.openDatabase ? (shimIndexedDB || indexedDB) : indexedDB).init_promise;
@@ -85,7 +86,9 @@ const willTransitionTo = (nextState, replaceState, callback) => {
             callback();
         }
     });
-};
+    /* Only try initialize the API with connect = true on the first onEnter */
+    connect = false;
+  };
 
 function loadRoute(cb, moduleName = "default") {
     return (module) => cb(null, module[moduleName]);

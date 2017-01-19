@@ -23,6 +23,7 @@
     "profile-nougly": "NODE_ENV=production webpack --config conf/webpack-prod-nougly.js --profile --json > stats-prod-nougly.json",
     "start": "NODE_ENV=development node server.js",
     "build": "NODE_ENV=production webpack --config conf/webpack-prod.js --progress --display-error-details --colors",
+    "build-hash": "NODE_ENV=production webpack --config conf/webpack-hash-history.js --progress --display-error-details --colors",
     "electron": "NODE_ENV=production webpack --config conf/webpack-electron.js --progress --display-error-details --colors;",
     "postelectron": " echo 'copying to electron/build..'; cp -r electron/* ../electron/build/; cp app/assets/index-electron.html ../electron/build/index.html; cd ../electron/; npm run release; echo 'done.'",
     "build-win32": "set NODE_ENV=production && webpack --config conf/webpack-prod.js --progress --colors &&  echo 'copying to electron/build..' &&  xcopy dist ..\\electron\\build /s /e /y && cp app\\assets\\index-electron.html ..\\electron\\build\\index.html && cd ..\\electron && npm run release && echo 'done.'"
@@ -45,8 +46,6 @@
     "git-rev-sync": "^1.4.0",
     "graphenejs-lib": "git+ssh://git@github.com/artwook/graphenejs-lib#artwook",
     "highcharts": "4.2.6",
-    "history": "1.13.1",
-    "html-loader": "^0.3.0",
     "immutable": "^3.8.1",
     "indexeddbshim": "^2.0.4",
     "intl": "^1.1.0",
@@ -75,7 +74,6 @@
     "react-router": "^3.0.0",
     "react-tooltip": "^3.2.2",
     "react-translate-component": "^0.13.2",
-    "svgo": "^0.5.1",
     "tcomb": "2.5.2",
     "whatwg-fetch": "^2.0.1"
   },

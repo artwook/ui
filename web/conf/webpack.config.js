@@ -53,13 +53,14 @@ module.exports = function(options) {
         new webpack.DefinePlugin({
             APP_VERSION: JSON.stringify(git.tag()),
             __ELECTRON__: !!options.electron,
-            CDN: JSON.stringify(options.cdn || "")
+            CDN: JSON.stringify(options.cdn || ""),
+            "__HASH_HISTORY__": !!options.hash
         })
     ];
 
     if (options.prod) {
         // PROD OUTPUT PATH
-        let outputDir = options.electron ? "electron" : "dist";
+        let outputDir = options.electron ? "electron" : options.hash ? "hash-history" : "dist";
         outputPath = path.join(root_dir, outputDir);
 
         // DIRECTORY CLEANER
