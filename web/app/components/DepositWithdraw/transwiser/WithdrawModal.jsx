@@ -11,8 +11,7 @@ import AccountActions from "actions/AccountActions";
 import Utils from "common/utils.js";
 
 
-@BindToChainState({keep_updating:true})
-export default class WithdrawModal extends React.Component {
+class WithdrawModal extends React.Component {
 
    static propTypes = {
        account:         ChainTypes.ChainAccount.isRequired,
@@ -151,3 +150,5 @@ export default class WithdrawModal extends React.Component {
                </form>)
    }
 };
+
+export default BindToChainState(WithdrawModal, {keep_updating:true});

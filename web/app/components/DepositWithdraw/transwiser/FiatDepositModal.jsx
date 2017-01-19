@@ -6,8 +6,7 @@ import BindToChainState from "components/Utility/BindToChainState";
 import AccountBalance from "components/Account/AccountBalance";
 import Utils from "common/utils.js";
 
-@BindToChainState({keep_updating:true})
-export default class FiatDepositModal extends React.Component {
+class FiatDepositModal extends React.Component {
 
     static propTypes =
     {
@@ -70,3 +69,5 @@ export default class FiatDepositModal extends React.Component {
    }
 
 };
+
+export default BindToChainState(FiatDepositModal, {keep_updating: true});

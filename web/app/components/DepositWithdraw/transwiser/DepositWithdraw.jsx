@@ -12,8 +12,7 @@ import notify from "actions/NotificationActions";
 import FiatDepositModal from "./FiatDepositModal";
 import WithdrawModal from "./WithdrawModal";
 
-@BindToChainState({keep_updating: true})
-export default class DepositWithdraw extends React.Component {
+class DepositWithdraw extends React.Component {
 
   static propTypes = {
     service:     React.PropTypes.string.isRequired,
@@ -193,3 +192,5 @@ class FiatWithdrawButton extends React.Component {
           </div>
   }
 }
+
+export default BindToChainState(DepositWithdraw, {keep_updating: true});

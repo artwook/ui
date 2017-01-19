@@ -7,7 +7,7 @@ import Modal from "react-foundation-apps/src/modal";
 import Trigger from "react-foundation-apps/src/trigger";
 import ZfApi from "react-foundation-apps/src/utils/foundation-api";
 import AccountBalance from "components/Account/AccountBalance";
-import connectToStores from "alt/utils/connectToStores";
+// import connectToStores from "alt/utils/connectToStores";
 import SettingsStore from "stores/SettingsStore";
 import SettingsActions from "actions/SettingsActions";
 import AssetName from "components/Utility/AssetName";
@@ -20,9 +20,7 @@ import DepositWithdraw from "./DepositWithdraw";
 import Notice from "./Notice";
 import ErrorDisplay from "./ErrorDisplay";
 
-@connectToStores
-// @BindToChainState()
-export default class TranswiserService extends React.Component {
+class TranswiserService extends React.Component {
 
   static getStores() {
     return [SettingsStore]
@@ -193,3 +191,5 @@ export default class TranswiserService extends React.Component {
   }
 
 }
+
+export default BindToChainState(TranswiserService, {keep_updating:true});

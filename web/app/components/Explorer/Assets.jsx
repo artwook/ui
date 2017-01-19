@@ -2,18 +2,16 @@ import React from "react";
 import {PropTypes} from "react";
 import AssetActions from "actions/AssetActions";
 import SettingsActions from "actions/SettingsActions";
-import {Link} from "react-router";
+import {Link} from "react-router/es";
 import Immutable from "immutable";
 import Translate from "react-translate-component";
 import LinkToAccountById from "../Blockchain/LinkToAccountById";
-import utils from "common/utils";
 import assetUtils from "common/asset_utils";
 import counterpart from "counterpart";
 import FormattedAsset from "../Utility/FormattedAsset";
 import AssetName from "../Utility/AssetName";
-import Tabs, {Tab} from "../Utility/Tabs";
-import MarketLink from "../Utility/MarketLink";
-import {ChainStore} from "graphenejs-lib";
+import {Tabs, Tab} from "../Utility/Tabs";
+import {ChainStore} from "graphenejs-lib/es";
 
 class Assets extends React.Component {
 
