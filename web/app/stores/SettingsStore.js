@@ -22,7 +22,7 @@ class SettingsStore {
             showSettles: false,
             showAssetPercent: false,
             walletLockTimeout: 60 * 10,
-            themes: "darkTheme",
+            themes: "olDarkTheme",
             disableChat: false
         });
 
@@ -32,12 +32,10 @@ class SettingsStore {
             "OPEN.STEEM", "OPEN.GAME", "PEERPLAYS", "USD", "CNY", "BTSR", "OBITS",
             "OPEN.DGD", "EUR", "TRADE.BTC", "CASH.BTC", "GOLD", "SILVER", "IOU.CNY",
             "OPEN.USDT", "OPEN.EURT", "OPEN.BTC", "CADASTRAL", "BLOCKPAY", "BTWTY",
-            "OPEN.INCNT" 
+            "OPEN.INCNT"
         ];
 
         this.preferredBases = Immutable.List([CORE_ASSET, "OPEN.BTC", "USD", "CNY", "BTC"]);
-        // Openledger
-        // this.preferredBases = Immutable.List(["OPEN.BTC", "OPEN.ETH", "OPEN.USDT", "OPEN.EURT", CORE_ASSET]);
 
         function addMarkets(target, base, markets) {
             markets.filter(a => {
@@ -62,11 +60,11 @@ class SettingsStore {
             locale: [
                 "cn",
                 "en",
-                "fr",
-                "ko",
-                "de",
-                "es",
-                "tr"
+                // "fr",
+                // "ko",
+                // "de",
+                // "es",
+                // "tr"
             ],
             apiServer: [],
             unit: [

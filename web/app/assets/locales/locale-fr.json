@@ -9,7 +9,7 @@
     "tr": "Turkish"
   },
   "header": {
-    "title": "Graphene",
+    "title": "ARTWOOK Ledger",
     "dashboard": "Accueil",
     "explorer": "Explorer",
     "exchange": "Échange",
@@ -379,7 +379,7 @@
     "always_confirm": "Toujours demander une confirmation"
   },
   "footer": {
-    "title": "Graphene",
+    "title": "ARTWOOK Ledger",
     "block": "Bloc courant"
   },
   "exchange": {

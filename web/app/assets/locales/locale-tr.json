@@ -706,12 +706,12 @@
     "themes": "Tema",
     "darkTheme": "Koyu tema",
     "lightTheme": "Açık tema",
-    "olDarkTheme": "Openledger koyu",
+    "olDarkTheme": "Dark Light koyu",
     "reset": "Ayarları sıfırla",
     "disableChat": "Sohbeti etkinsizleştir"
   },
   "footer": {
-    "title": "Graphene",
+    "title": "ARTWOOK Ledger",
     "block": "Başat blok",
     "loading": "Yükleniyor...",
     "backup": "Yedekleme Gerekli",
