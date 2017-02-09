@@ -5,7 +5,7 @@ var Immutable = require("immutable");
 import {merge} from "lodash";
 import ls from "common/localStorage";
 
-const CORE_ASSET = "AWK"; // Setting this to BTS to prevent loading issues when used with BTS chain which is the most usual case currently
+const CORE_ASSET = "1.3.1"; // set to CNY, 1.3.0 to FUEL
 
 const STORAGE_KEY = "__artwook__";
 let ss = new ls(STORAGE_KEY);

@@ -62,16 +62,16 @@ class AccountOverview extends React.Component {
             let asset = ChainStore.getObject(asset_type);
             let isBitAsset = asset && asset.has("bitasset_data_id");
 
-            const core_asset = ChainStore.getAsset("1.3.0");
+            const core_asset = ChainStore.getAsset(settings.get('unit'));
+            // const core_asset = ChainStore.getAsset("1.3.1");
 
             let assetInfoLinks;
             let marketLink, directMarketLink, settleLink, transferLink;
             if (asset) {
                 let {market} = assetUtils.parseDescription(asset.getIn(["options", "description"]));
-
-                let preferredMarket = market ? market : core_asset ? core_asset.get("symbol") : "BTS";
-                marketLink = asset.get("id") !== "1.3.0" ? <a href={`${__HASH_HISTORY__ ? "#" : ""}/market/${asset.get("symbol")}_${preferredMarket}`}><AssetName name={asset.get("symbol")} /> : <AssetName name={preferredMarket} /></a> : null;
-                directMarketLink = asset.get("id") !== "1.3.0" ? <Link to={`/market/${asset.get("symbol")}_${preferredMarket}`}><Translate content="account.trade" /></Link> : null;
+                let preferredMarket = market ? market : core_asset ? core_asset.get("symbol") : "FUEL";
+                marketLink = asset.get("id") !== settings.get('unit') ? <a href={`${__HASH_HISTORY__ ? "#" : ""}/market/${asset.get("symbol")}_${preferredMarket}`}><AssetName name={asset.get("symbol")} /> : <AssetName name={preferredMarket} /></a> : null;
+                directMarketLink = asset.get("id") !== settings.get('unit') ? <Link to={`/market/${asset.get("symbol")}_${preferredMarket}`}><Translate content="account.trade" /></Link> : null;
                 transferLink = <Link to={`/transfer?asset=${asset.get("id")}`}><Translate content="transaction.trxTypes.transfer" /></Link>;
                 settleLink = <a href onClick={this._onSettleAsset.bind(this, asset.get("id"))}>
                     <Translate content="account.settle"/></a>;
@@ -79,7 +79,7 @@ class AccountOverview extends React.Component {
                 assetInfoLinks = (
                 <ul>
                     <li><a href={`${__HASH_HISTORY__ ? "#" : ""}/asset/${asset.get("symbol")}`}><Translate content="account.asset_details"/></a></li>
-                    <li>{marketLink}</li>
+                    {marketLink ? <li>{marketLink}</li> : null}
                     {isBitAsset ? <li>{settleLink}</li> : null}
                 </ul>);
             }

@@ -91,7 +91,7 @@ class Assets extends React.Component {
         }).map((asset) => {
             let description = assetUtils.parseDescription(asset.options.description);
 
-            let marketID = asset.symbol + "_" + (description.market ? description.market : coreAsset ? coreAsset.get("symbol") : "AWK");
+            let marketID = asset.symbol + "_" + (description.market ? description.market : coreAsset ? coreAsset.get("symbol") : "FUEL");
 
             return (
                 <tr key={asset.symbol}>
@@ -116,7 +116,7 @@ class Assets extends React.Component {
         }).map((asset) => {
             let description = assetUtils.parseDescription(asset.options.description);
 
-            let marketID = asset.symbol + "_" + (description.market ? description.market : coreAsset ? coreAsset.get("symbol") : "AWK");
+            let marketID = asset.symbol + "_" + (description.market ? description.market : coreAsset ? coreAsset.get("symbol") : "FUEL");
 
             return (
                 <tr key={asset.symbol}>
@@ -149,7 +149,7 @@ class Assets extends React.Component {
             );
         }).map((asset) => {
             let description = assetUtils.parseDescription(asset.options.description);
-            let marketID = asset.symbol + "_" + (description.market ? description.market : coreAsset ? coreAsset.get("symbol") : "AWK");
+            let marketID = asset.symbol + "_" + (description.market ? description.market : coreAsset ? coreAsset.get("symbol") : "FUEL");
 
             return (
                 <tr key={asset.id.split(".")[2]}>
@@ -188,6 +188,7 @@ class Assets extends React.Component {
                 <div className="grid-block page-layout">
                     <div className="grid-block small-12 medium-10 medium-offset-1 main-content vertical">
                         <div className="generic-bordered-box">
+                            {/*
                             <Tabs
                                 tabsClass="no-padding bordered-header"
                                 setting="assetsTab"
@@ -250,6 +251,34 @@ class Assets extends React.Component {
                                     </div>
                                 </Tab>
                             </Tabs>
+                            */}
+
+                            {/*UIA starts*/}
+                            <div className="grid-block vertical no-overflow no-padding">
+                              <div className="grid-block vertical">
+                                <div className="grid-block shrink">
+                                    <input style={{maxWidth: "500px"}} placeholder={placeholder} type="text" value={this.state.filterUIA} onChange={this._onFilter.bind(this, "filterUIA")}></input>
+                                </div>
+                                <div className="grid-block" style={{paddingBottom: 20}}>
+                                    <table className="table">
+                                        <thead>
+                                        <tr>
+                                            <th><Translate component="span" content="explorer.assets.symbol" /></th>
+                                            <th><Translate component="span" content="explorer.assets.issuer" /></th>
+                                            <th><Translate component="span" content="markets.supply" /></th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            {uia}
+                                        </tbody>
+                                    </table>
+                                </div>
+                              </div>
+                            </div>
+                            {/*UIA ends*/}
+
                         </div>
                     </div>
                 </div>

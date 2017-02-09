@@ -29,7 +29,7 @@ class ValueComponent extends React.Component {
     };
 
     static defaultProps = {
-        toAsset: "1.3.0",
+        toAsset: ChainStore.getCoreAssetId(),
         fullPrecision: true,
         noDecimals: false
     };
@@ -42,7 +42,7 @@ class ValueComponent extends React.Component {
     }
 
     componentWillMount() {
-        let coreAsset = ChainStore.getAsset("1.3.0");
+        let coreAsset = ChainStore.getCoreAsset();
         if (coreAsset) {
             if (this.props.fromAsset.get("id") !== coreAsset.get("id")) {
                 MarketsActions.getMarketStats(coreAsset, this.props.fromAsset);
@@ -71,12 +71,12 @@ class ValueComponent extends React.Component {
 
     getValue() {
         let {amount, toAsset, fromAsset, fullPrecision, marketStats} = this.props;
-        let coreAsset = ChainStore.getAsset("1.3.0");
+        let coreAsset = ChainStore.getCoreAsset();
         let toStats, fromStats;
 
-        let toID = toAsset.get("id");
-        let toSymbol = toAsset.get("symbol");
-        let fromID = fromAsset.get("id");
+        let toID       = toAsset.get("id");
+        let toSymbol   = toAsset.get("symbol");
+        let fromID     = fromAsset.get("id");
         let fromSymbol = fromAsset.get("symbol");
 
         if (!fullPrecision) {
@@ -86,7 +86,7 @@ class ValueComponent extends React.Component {
         if (coreAsset && marketStats) {
             let coreSymbol = coreAsset.get("symbol");
 
-            toStats = marketStats.get(toSymbol + "_" + coreSymbol);
+            toStats   = marketStats.get(toSymbol + "_" + coreSymbol);
             fromStats = marketStats.get(fromSymbol + "_" + coreSymbol);
         }
 
@@ -97,12 +97,13 @@ class ValueComponent extends React.Component {
 
     render() {
         let {amount, toAsset, fromAsset, fullPrecision, marketStats} = this.props;
-        let coreAsset = ChainStore.getAsset("1.3.0");
+        let coreAssetId = ChainStore.getCoreAssetId();
+        let coreAsset   = ChainStore.getCoreAsset();
         let toStats, fromStats;
 
-        let toID = toAsset.get("id");
-        let toSymbol = toAsset.get("symbol");
-        let fromID = fromAsset.get("id");
+        let toID       = toAsset.get("id");
+        let toSymbol   = toAsset.get("symbol");
+        let fromID     = fromAsset.get("id");
         let fromSymbol = fromAsset.get("symbol");
 
         if (!fullPrecision) {
@@ -117,13 +118,14 @@ class ValueComponent extends React.Component {
         }
 
         let price = utils.convertPrice(fromStats && fromStats.close ? fromStats.close :
-                                        fromID === "1.3.0" || fromAsset.has("bitasset") ? fromAsset : null,
+                                        fromID === coreAssetId || fromAsset.has("bitasset") ? fromAsset : null,
                                         toStats && toStats.close ? toStats.close :
-                                        (toID === "1.3.0" || toAsset.has("bitasset")) ? toAsset : null,
+                                        (toID === coreAssetId || toAsset.has("bitasset")) ? toAsset : null,
                                         fromID,
                                         toID);
 
         let eqValue = price ? utils.convertValue(price, amount, fromAsset, toAsset) : null;
+        // debugger
 
         if (!eqValue) {
             return <div className="tooltip inline-block" data-place="bottom" data-tip={counterpart.translate("tooltip.no_price")} style={{fontSize: "0.9rem"}}><Translate content="account.no_price" /></div>;
@@ -158,7 +160,7 @@ class BalanceValueComponent extends React.Component {
     }
 
     render() {
-        let amount = Number(this.props.balance.get("balance"));
+        let amount = parseInt(this.props.balance.get("balance"),10);
         let fromAsset = this.props.balance.get("asset_type");
 
         return <EquivalentValueComponent amount={amount} fromAsset={fromAsset} noDecimals={true} toAsset={this.props.toAsset}/>;

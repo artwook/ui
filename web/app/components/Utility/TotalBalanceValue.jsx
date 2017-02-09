@@ -55,7 +55,7 @@ class TotalValue extends React.Component {
     }
 
     _startUpdates(props) {
-        let coreAsset = ChainStore.getAsset("1.3.0");
+        let coreAsset = ChainStore.getCoreAsset();
         let {fromAssets} = props;
 
         if (coreAsset) {
@@ -121,9 +121,9 @@ class TotalValue extends React.Component {
         }
 
         let price = utils.convertPrice(fromStats && fromStats.close ? fromStats.close :
-                                       fromID === "1.3.0" || fromAsset.has("bitasset") ? fromAsset : null,
+                                       fromID === ChainStore.getCoreAssetId() || fromAsset.has("bitasset") ? fromAsset : null,
                                        toStats && toStats.close ? toStats.close :
-                                       (toID === "1.3.0" || toAsset.has("bitasset")) ? toAsset : null,
+                                       (toID === ChainStore.getCoreAssetId() || toAsset.has("bitasset")) ? toAsset : null,
                                        fromID,
                                        toID);
 
@@ -142,7 +142,7 @@ class TotalValue extends React.Component {
 
     render() {
         let {fromAssets, toAsset, balances, marketStats, collateral, debt, openOrders, inHeader} = this.props;
-        let coreAsset = ChainStore.getAsset("1.3.0");
+        let coreAsset = ChainStore.getCoreAsset();
 
         if (!coreAsset || !toAsset) {
             return null;
@@ -263,7 +263,7 @@ TotalValue = BindToChainState(TotalValue, {keep_updating: true});
 
 class ValueStoreWrapper extends React.Component {
     render() {
-        let preferredUnit = this.props.settings.get("unit") || "1.3.0";
+      let preferredUnit = this.props.settings.get("unit") || ChainStore.getCoreAssetId();
 
         return <TotalValue {...this.props} toAsset={preferredUnit}/>;
     }

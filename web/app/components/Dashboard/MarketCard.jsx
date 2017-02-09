@@ -9,6 +9,7 @@ import MarketsStore from "stores/MarketsStore";
 import { connect } from "alt-react";
 import utils from "common/utils";
 import Translate from "react-translate-component";
+import Identicon from "../Account/Identicon";
 
 class MarketCard extends React.Component {
 
@@ -70,17 +71,24 @@ class MarketCard extends React.Component {
         let stats = marketStats.get(marketID);
         let changeClass = !stats ? "" : parseFloat(stats.change) > 0 ? "change-up" : parseFloat(stats.change) < 0 ? "change-down" : "";
 
-        if (imgName === "BTS") {
+        if (imgName === "FUEL") {
             imgName = getImageName(quote);
         }
+
+        let assetIcon = <div className="asset-image">
+            <Identicon id={imgName} account={imgName} size={{width:64,height:64}} />
+        </div>;
 
         return (
             <div className={cnames("grid-block no-overflow fm-container", this.props.className)} onClick={this.goToMarket.bind(this)}>
                 <div className="grid-block vertical shrink">
+                  {assetIcon}
+                  {/*
                     <img ref={imgName.toLowerCase()} onError={() => {this.refs[imgName.toLowerCase()].src = "asset-symbols/bts.png";}} style={{maxWidth: 70}} src={"asset-symbols/"+ imgName.toLowerCase() + ".png"} />
+                  */}
                 </div>
                 <div className="grid-block vertical no-overflow">
-                    <div className="fm-title" style={{visibility: this.props.new ? "visible" : "hidden"}}><Translate content="exchange.new" /></div>
+                    <div className="fm-title red" style={{visibility: this.props.new ? "visible" : "hidden"}}><Translate content="exchange.new" /></div>
                     <div className="fm-name">{desc.short_name ? <span>{desc.short_name}</span> : <AssetName name={base.get("symbol")} />}</div>
                     <div className="fm-volume">{(!stats || !stats.close) ? null : utils.format_price(
                         stats.close.quote.amount,
